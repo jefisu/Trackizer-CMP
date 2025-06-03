@@ -1,0 +1,72 @@
+[versions]
+agp = "8.7.3"
+android-compileSdk = "35"
+android-minSdk = "24"
+android-targetSdk = "35"
+androidx-activity = "1.10.1"
+androidx-lifecycle = "2.9.0"
+composeHotReload = "1.0.0-alpha10"
+composeMultiplatform = "1.8.1"
+kotlin = "2.1.21"
+androidTools = "31.10.1"
+ktlint = "12.3.0"
+detekt = "1.23.8"
+twitter-detekt-compose = "0.0.26"
+moduleGraph = "2.8.0"
+dependencyGuard = "0.5.0"
+truth = "1.4.4"
+
+packageName = "com.jefisu.trackizer"
+application-version = "1.0.0"
+
+[libraries]
+# Kotlin Multiplatform (KMP)
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
+# AndroidX
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+
+# Compose Multiplatform (CMP)
+compose-gradlePlugin = { module = "org.jetbrains.compose:org.jetbrains.compose.gradle.plugin", version.ref = "composeMultiplatform" }
+
+# Testing
+truth = { module = "com.google.truth:truth", version.ref = "truth" }
+
+# Code Quality & Formatting
+twitter-detekt-compose = { module = "com.twitter.compose.rules:detekt", version.ref = "twitter-detekt-compose" }
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+ktlint-gradlePlugin = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlint" }
+detekt-gradlePlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+
+# Build Tools
+android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+android-tools-common = { module = "com.android.tools:common", version.ref = "androidTools" }
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+dependencyGuard-gradlePlugin = { module = "com.dropbox.dependency-guard:com.dropbox.dependency-guard.gradle.plugin", version.ref = "dependencyGuard" }
+
+[plugins]
+# Android
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+
+# Kotlin Multiplatform (KMP)
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+
+# Compose Multiplatform (CMP)
+composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# Code Quality & Formatting
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+moduleGraph = { id = "com.jraska.module.graph.assertion", version.ref = "moduleGraph" }
+dependencyGuard = { id = "com.dropbox.dependency-guard", version.ref = "dependencyGuard" }
+
+# Custom Plugins
+trackizer-cmp-application = { id = "trackizer.cmp.application", version = "unspecified" }
+trackizer-cmp-feature = { id = "trackizer.cmp.feature", version = "unspecified" }
+trackizer-kmp-library = { id = "trackizer.kmp.library", version = "unspecified" }
