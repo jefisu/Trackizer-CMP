@@ -4,6 +4,14 @@ plugins {
     alias(libs.plugins.trackizer.cmp.application)
 }
 
+kotlin {
+    sourceSets {
+        androidMain.dependencies {
+            implementation(libs.androidx.core.splashscreen)
+        }
+    }
+}
+
 android {
     namespace = libs.versions.packageName.get()
     compileSdk = libs.versions.android.compileSdk.get().toInt()
