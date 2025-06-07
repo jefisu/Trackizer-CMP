@@ -12,3 +12,8 @@ val Project.moduleName get() = path
     .split(":")
     .filter { it.isNotBlank() }
     .joinToString("") { it.capitalized() }
+
+val Project.modulePackageName get() = path
+    .split(":")
+    .filter { it.isNotBlank() }
+    .joinToString(".") { it.lowercase() }

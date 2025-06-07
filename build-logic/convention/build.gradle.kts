@@ -50,5 +50,9 @@ gradlePlugin {
             id = "trackizer.kmp.library"
             implementationClass = "KMPLibraryConventionPlugin"
         }
+        register("cmp-library") {
+            id = "trackizer.cmp.library"
+            implementationClass = "CMPLibraryConventionPlugin"
+        }
     }
 }

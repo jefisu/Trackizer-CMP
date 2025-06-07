@@ -27,6 +27,9 @@ class CMPConventionPlugin : Plugin<Project> {
 
                 "commonMainImplementation"(libs.findLibrary("androidx-lifecycle-viewmodel").get())
                 "commonMainImplementation"(libs.findLibrary("androidx-lifecycle-runtimeCompose").get())
+                "commonMainImplementation"(libs.findLibrary("compose-shadow").get())
+
+                "debugImplementation"(uiTooling)
 
                 "androidMainImplementation"(preview)
 

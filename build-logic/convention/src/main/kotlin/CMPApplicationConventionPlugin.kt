@@ -22,6 +22,7 @@ class CMPApplicationConventionPlugin : Plugin<Project> {
             apply<DetektConventionPlugin>()
             apply<DependencyGuardConventionPlugin>()
             apply<GitHooksConventionPlugin>()
+            apply(libs.getPluginId("kotlinxSerialization"))
         }
 
         with(extensions) {
@@ -32,6 +33,9 @@ class CMPApplicationConventionPlugin : Plugin<Project> {
         }
 
         dependencies {
+            "commonMainImplementation"(libs.findLibrary("compose-navigation").get())
+            "commonMainImplementation"(libs.findLibrary("kotlinx-serialization").get())
+
             "androidMainImplementation"(libs.findLibrary("androidx-activity-compose").get())
         }
     }

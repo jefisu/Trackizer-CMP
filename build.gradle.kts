@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.detekt) apply false
     alias(libs.plugins.moduleGraph) apply true
     alias(libs.plugins.dependencyGuard) apply false
+    alias(libs.plugins.kotlinxSerialization) apply false
 }
 
 // Task to print all the module paths in the project e.g. :core:data
