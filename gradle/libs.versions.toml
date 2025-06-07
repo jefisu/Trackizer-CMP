@@ -16,6 +16,7 @@ twitter-detekt-compose = "0.0.26"
 moduleGraph = "2.8.0"
 dependencyGuard = "0.5.0"
 truth = "1.4.4"
+compose-shadow = "2.0.4"
 
 packageName = "com.jefisu.trackizer"
 application-version = "1.0.0"
@@ -32,6 +33,7 @@ androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", versi
 
 # Compose Multiplatform (CMP)
 compose-gradlePlugin = { module = "org.jetbrains.compose:org.jetbrains.compose.gradle.plugin", version.ref = "composeMultiplatform" }
+compose-shadow = { module = "com.adamglin:compose-shadow", version.ref = "compose-shadow" }
 
 # Testing
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
