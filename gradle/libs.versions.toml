@@ -17,6 +17,8 @@ moduleGraph = "2.8.0"
 dependencyGuard = "0.5.0"
 truth = "1.4.4"
 compose-shadow = "2.0.4"
+compose-navigation = "2.9.0-beta01"
+kotlinx-serialization = "1.8.1"
 
 packageName = "com.jefisu.trackizer"
 application-version = "1.0.0"
@@ -24,6 +26,7 @@ application-version = "1.0.0"
 [libraries]
 # Kotlin Multiplatform (KMP)
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 # AndroidX
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
@@ -34,6 +37,7 @@ androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", versi
 # Compose Multiplatform (CMP)
 compose-gradlePlugin = { module = "org.jetbrains.compose:org.jetbrains.compose.gradle.plugin", version.ref = "composeMultiplatform" }
 compose-shadow = { module = "com.adamglin:compose-shadow", version.ref = "compose-shadow" }
+compose-navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
 
 # Testing
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
@@ -58,6 +62,7 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 
 # Kotlin Multiplatform (KMP)
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 # Compose Multiplatform (CMP)
 composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" }
