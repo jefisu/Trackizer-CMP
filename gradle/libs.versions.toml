@@ -72,3 +72,4 @@ dependencyGuard = { id = "com.dropbox.dependency-guard", version.ref = "dependen
 trackizer-cmp-application = { id = "trackizer.cmp.application", version = "unspecified" }
 trackizer-cmp-feature = { id = "trackizer.cmp.feature", version = "unspecified" }
 trackizer-kmp-library = { id = "trackizer.kmp.library", version = "unspecified" }
+trackizer-cmp-library = { id = "trackizer.cmp.library", version = "unspecified" }

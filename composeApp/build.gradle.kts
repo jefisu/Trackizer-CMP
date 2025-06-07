@@ -6,6 +6,9 @@ plugins {
 
 kotlin {
     sourceSets {
+        commonMain.dependencies {
+            implementation(projects.core.designsystem)
+        }
         androidMain.dependencies {
             implementation(libs.androidx.core.splashscreen)
         }

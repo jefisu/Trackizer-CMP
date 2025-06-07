@@ -50,3 +50,4 @@ check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
 includeBuild("build-logic")
 
 include(":composeApp")
+include(":core:designsystem")
