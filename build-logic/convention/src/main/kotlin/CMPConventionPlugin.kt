@@ -26,8 +26,11 @@ class CMPConventionPlugin : Plugin<Project> {
                 "commonMainImplementation"(components.uiToolingPreview)
 
                 "commonMainImplementation"(libs.findLibrary("androidx-lifecycle-viewmodel").get())
+                "commonMainImplementation"(libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
                 "commonMainImplementation"(libs.findLibrary("androidx-lifecycle-runtimeCompose").get())
                 "commonMainImplementation"(libs.findLibrary("compose-shadow").get())
+                "commonMainImplementation"(libs.findLibrary("composeIcons-feather").get())
+                "commonMainImplementation"(libs.findLibrary("compose-unstyled").get())
 
                 "debugImplementation"(uiTooling)
 

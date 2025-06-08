@@ -8,7 +8,9 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core.designsystem)
+            implementation(projects.core.ui)
             implementation(projects.feature.welcome)
+            implementation(projects.feature.auth)
         }
         androidMain.dependencies {
             implementation(libs.androidx.core.splashscreen)

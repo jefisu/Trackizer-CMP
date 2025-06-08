@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General  -->
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+
+    <!-- Sign InScreen  -->
+    <string name="sign_in">Sign In</string>
+    <string name="if_you_don_t_have_an_account_yet">If you don't have an account yet?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot password</string>
+
+    <!-- Forgot Password -->
+    <string name="send">Send</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="reset_instructions_will_be_send_to_your_email">Reset instructions will be send to your email</string>
+
+</resources>

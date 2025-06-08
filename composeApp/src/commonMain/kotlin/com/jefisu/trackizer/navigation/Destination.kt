@@ -5,5 +5,11 @@ import kotlinx.serialization.Serializable
 sealed interface Destination {
 
     @Serializable
+    data object AuthGraph : Destination
+
+    @Serializable
     data object WelcomeScreen : Destination
+
+    @Serializable
+    data object LoginScreen : Destination
 }

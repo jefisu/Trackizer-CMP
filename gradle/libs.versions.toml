@@ -19,6 +19,8 @@ truth = "1.4.4"
 compose-shadow = "2.0.4"
 compose-navigation = "2.9.0-beta01"
 kotlinx-serialization = "1.8.1"
+composeIcons = "1.1.1"
+compose-unstyled = "1.31.1"
 
 packageName = "com.jefisu.trackizer"
 application-version = "1.0.0"
@@ -31,6 +33,7 @@ kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-
 # AndroidX
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splashscreen" }
 
@@ -38,6 +41,8 @@ androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", versi
 compose-gradlePlugin = { module = "org.jetbrains.compose:org.jetbrains.compose.gradle.plugin", version.ref = "composeMultiplatform" }
 compose-shadow = { module = "com.adamglin:compose-shadow", version.ref = "compose-shadow" }
 compose-navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
+composeIcons-feather = { module = "br.com.devsrsouza.compose.icons:feather", version.ref = "composeIcons" }
+compose-unstyled = { module = "com.composables:core", version.ref = "compose-unstyled" }
 
 # Testing
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
