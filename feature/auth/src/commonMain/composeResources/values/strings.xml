@@ -4,6 +4,12 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
 
+    <!-- Custom Auth Provider Screen -->
+    <string name="sign_up_with">Sign up with %1$s</string>
+    <string name="or">Or</string>
+    <string name="sign_up_with_email">Sign up with E-mail</string>
+    <string name="by_registering_you_agree">By registering, you agree to our Terms of Use. Learn\nhow we collect, use and share your data.</string>
+
     <!-- Sign InScreen  -->
     <string name="sign_in">Sign In</string>
     <string name="if_you_don_t_have_an_account_yet">If you don't have an account yet?</string>

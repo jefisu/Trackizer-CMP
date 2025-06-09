@@ -11,5 +11,8 @@ sealed interface Destination {
     data object WelcomeScreen : Destination
 
     @Serializable
+    data object ThirdPartyAuthScreen : Destination
+
+    @Serializable
     data object LoginScreen : Destination
 }
