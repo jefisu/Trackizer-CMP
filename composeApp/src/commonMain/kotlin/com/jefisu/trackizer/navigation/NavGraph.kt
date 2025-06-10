@@ -6,6 +6,7 @@ import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
@@ -14,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.jefisu.trackizer.auth.presentation.login.LoginScreenRoot
+import com.jefisu.trackizer.auth.presentation.register.RegisterScreenRoot
 import com.jefisu.trackizer.auth.presentation.thirdpartyauth.ThirdPartyAuthRoot
 import com.jefisu.trackizer.core.ui.LocalAnimatedContentScope
 import com.jefisu.trackizer.core.ui.LocalSharedTransitionScope
@@ -29,9 +31,15 @@ fun NavGraph(navController: NavHostController) {
             ),
             Destination.ThirdPartyAuthScreen to listOf(
                 AnimationTarget(Destination.WelcomeScreen, AnimationType.VERTICAL),
+                AnimationTarget(Destination.RegisterScreen, AnimationType.HORIZONTAL),
             ),
             Destination.LoginScreen to listOf(
                 AnimationTarget(Destination.WelcomeScreen, AnimationType.VERTICAL),
+                AnimationTarget(Destination.ThirdPartyAuthScreen, AnimationType.HORIZONTAL),
+            ),
+            Destination.RegisterScreen to listOf(
+                AnimationTarget(Destination.ThirdPartyAuthScreen, AnimationType.HORIZONTAL),
+                AnimationTarget(Destination.LoginScreen, AnimationType.HORIZONTAL),
             ),
         ).map { (currentDestination, targets) ->
             AnimationConfig(currentDestination = currentDestination, targets = targets)
@@ -78,12 +86,23 @@ fun NavGraph(navController: NavHostController) {
                         }
                         animatedScreen<Destination.ThirdPartyAuthScreen> {
                             ThirdPartyAuthRoot(
-                                onNavigateToRegisterScreen = {},
+                                onNavigateToRegisterScreen = {
+                                    navController.navigate(Destination.RegisterScreen)
+                                },
                             )
                         }
                         animatedScreen<Destination.LoginScreen> {
                             LoginScreenRoot(
-                                onNavigateToRegisterScreen = {},
+                                onNavigateToRegisterScreen = {
+                                    navController.navigate(Destination.ThirdPartyAuthScreen)
+                                },
+                            )
+                        }
+                        animatedScreen<Destination.RegisterScreen> {
+                            RegisterScreenRoot(
+                                onNavigateToLoginScreen = {
+                                    navController.navigate(Destination.LoginScreen)
+                                },
                             )
                         }
                     }
