@@ -69,8 +69,10 @@ private fun RegisterScreen(state: RegisterState, onAction: (RegisterAction) -> U
         Column(
             modifier = Modifier
                 .align(Alignment.Center)
-                .safeDrawingPadding(),
+                .safeDrawingPadding()
+                .padding(top = TrackizerTheme.spacing.extraLarge.times(.8f)),
         ) {
+            Spacer(modifier = Modifier.weight(1f))
             TrackizerTextField(
                 text = state.email,
                 onTextChange = { onAction(RegisterAction.EmailChanged(it)) },
@@ -110,12 +112,7 @@ private fun RegisterScreen(state: RegisterState, onAction: (RegisterAction) -> U
                 isLoading = state.isLoading,
                 modifier = Modifier.fillMaxWidth(),
             )
-        }
-        Column(
-            modifier = Modifier
-                .align(Alignment.BottomStart)
-                .safeDrawingPadding(),
-        ) {
+            Spacer(modifier = Modifier.weight(1f))
             Text(
                 text = stringResource(Res.string.do_you_have_already_an_account),
                 style = TrackizerTheme.typography.bodyMedium,

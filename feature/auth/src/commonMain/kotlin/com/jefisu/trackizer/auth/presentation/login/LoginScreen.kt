@@ -83,8 +83,10 @@ private fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .align(Alignment.Center)
-                .safeDrawingPadding(),
+                .safeDrawingPadding()
+                .padding(top = TrackizerTheme.spacing.extraLarge.times(.8f)),
         ) {
+            Spacer(modifier = Modifier.weight(1f))
             TrackizerTextField(
                 text = state.email,
                 onTextChange = { onAction(LoginAction.EmailChanged(it)) },
@@ -134,12 +136,7 @@ private fun LoginScreen(
                 onClick = { onAction(LoginAction.Login) },
                 modifier = Modifier.fillMaxWidth(),
             )
-        }
-        Column(
-            modifier = Modifier
-                .align(Alignment.BottomStart)
-                .safeDrawingPadding(),
-        ) {
+            Spacer(modifier = Modifier.weight(1f))
             Text(
                 text = stringResource(Res.string.if_you_don_t_have_an_account_yet),
                 style = TrackizerTheme.typography.bodyMedium,
