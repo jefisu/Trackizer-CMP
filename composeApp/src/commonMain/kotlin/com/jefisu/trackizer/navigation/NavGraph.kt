@@ -6,7 +6,6 @@ import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
@@ -26,20 +25,17 @@ fun NavGraph(navController: NavHostController) {
     val navAnimationConfig = remember {
         listOf(
             Destination.WelcomeScreen to listOf(
-                AnimationTarget(Destination.LoginScreen, AnimationType.VERTICAL),
-                AnimationTarget(Destination.ThirdPartyAuthScreen, AnimationType.VERTICAL),
+                AnimationTarget(Destination.LoginScreen, AnimationType.BOTTOM_TO_TOP),
+                AnimationTarget(Destination.ThirdPartyAuthScreen, AnimationType.BOTTOM_TO_TOP),
             ),
             Destination.ThirdPartyAuthScreen to listOf(
-                AnimationTarget(Destination.WelcomeScreen, AnimationType.VERTICAL),
-                AnimationTarget(Destination.RegisterScreen, AnimationType.HORIZONTAL),
+                AnimationTarget(Destination.RegisterScreen, AnimationType.RIGHT_TO_LEFT),
             ),
             Destination.LoginScreen to listOf(
-                AnimationTarget(Destination.WelcomeScreen, AnimationType.VERTICAL),
-                AnimationTarget(Destination.ThirdPartyAuthScreen, AnimationType.HORIZONTAL),
+                AnimationTarget(Destination.ThirdPartyAuthScreen, AnimationType.TOP_TO_BOTTOM),
             ),
             Destination.RegisterScreen to listOf(
-                AnimationTarget(Destination.ThirdPartyAuthScreen, AnimationType.HORIZONTAL),
-                AnimationTarget(Destination.LoginScreen, AnimationType.HORIZONTAL),
+                AnimationTarget(Destination.LoginScreen, AnimationType.LEFT_TO_RIGHT),
             ),
         ).map { (currentDestination, targets) ->
             AnimationConfig(currentDestination = currentDestination, targets = targets)
@@ -56,19 +52,13 @@ fun NavGraph(navController: NavHostController) {
                 NavHost(
                     navController = navController,
                     startDestination = Destination.AuthGraph,
-                    enterTransition = { navAnimation.enterTransition(this) },
-                    exitTransition = { navAnimation.exitTransition(this) },
+                    enterTransition = navAnimation::enterTransition,
+                    exitTransition = navAnimation::exitTransition,
                     popEnterTransition = {
-                        navAnimation.enterTransition(
-                            this,
-                            isPopAnimation = true,
-                        )
+                        navAnimation.enterTransition(scope = this, isPopAnimation = true)
                     },
                     popExitTransition = {
-                        navAnimation.exitTransition(
-                            this,
-                            isPopAnimation = true,
-                        )
+                        navAnimation.exitTransition(scope = this, isPopAnimation = true)
                     },
                 ) {
                     navigation<Destination.AuthGraph>(

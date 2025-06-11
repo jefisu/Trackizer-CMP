@@ -19,9 +19,13 @@ data class AnimationConfig(
 )
 
 enum class AnimationType {
-    HORIZONTAL,
-    VERTICAL,
+    TOP_TO_BOTTOM,
+    BOTTOM_TO_TOP,
+    LEFT_TO_RIGHT,
+    RIGHT_TO_LEFT,
 }
+
+private typealias AnimatedTransition = AnimatedContentTransitionScope.SlideDirection
 
 class NavAnimation(
     private val animConfigs: List<AnimationConfig> = emptyList(),
@@ -47,49 +51,19 @@ class NavAnimation(
     private fun getSlideDirection(
         animationType: AnimationType,
         isPop: Boolean,
-        isEnter: Boolean,
-    ): AnimatedContentTransitionScope.SlideDirection {
+    ): AnimatedTransition {
         return when (animationType) {
-            AnimationType.HORIZONTAL -> getHorizontalSlideDirection(isPop, isEnter)
-            AnimationType.VERTICAL -> getVerticalSlideDirection(isPop, isEnter)
-        }
-    }
+            AnimationType.BOTTOM_TO_TOP ->
+                if (isPop) AnimatedTransition.Down else AnimatedTransition.Up
 
-    private fun getHorizontalSlideDirection(
-        isPop: Boolean,
-        isEnter: Boolean,
-    ): AnimatedContentTransitionScope.SlideDirection {
-        return if (isEnter) {
-            if (isPop) {
-                AnimatedContentTransitionScope.SlideDirection.Right
-            } else {
-                AnimatedContentTransitionScope.SlideDirection.Left
-            }
-        } else {
-            if (isPop) {
-                AnimatedContentTransitionScope.SlideDirection.Right
-            } else {
-                AnimatedContentTransitionScope.SlideDirection.Left
-            }
-        }
-    }
+            AnimationType.TOP_TO_BOTTOM ->
+                if (isPop) AnimatedTransition.Up else AnimatedTransition.Down
 
-    private fun getVerticalSlideDirection(
-        isPop: Boolean,
-        isEnter: Boolean,
-    ): AnimatedContentTransitionScope.SlideDirection {
-        return if (isEnter) {
-            if (isPop) {
-                AnimatedContentTransitionScope.SlideDirection.Down
-            } else {
-                AnimatedContentTransitionScope.SlideDirection.Up
-            }
-        } else {
-            if (isPop) {
-                AnimatedContentTransitionScope.SlideDirection.Down
-            } else {
-                AnimatedContentTransitionScope.SlideDirection.Up
-            }
+            AnimationType.RIGHT_TO_LEFT ->
+                if (isPop) AnimatedTransition.Right else AnimatedTransition.Left
+
+            AnimationType.LEFT_TO_RIGHT ->
+                if (isPop) AnimatedTransition.Left else AnimatedTransition.Right
         }
     }
 
@@ -104,7 +78,6 @@ class NavAnimation(
             towards = getSlideDirection(
                 animationType = animationType,
                 isPop = isPopAnimation,
-                isEnter = true,
             ),
             animationSpec = tween(animDuration),
         )
@@ -121,7 +94,6 @@ class NavAnimation(
             towards = getSlideDirection(
                 animationType = animationType,
                 isPop = isPopAnimation,
-                isEnter = false,
             ),
             animationSpec = tween(animDuration),
         )
