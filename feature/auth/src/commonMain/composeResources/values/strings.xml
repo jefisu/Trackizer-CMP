@@ -25,6 +25,19 @@
     <!-- Forgot Password -->
     <string name="send">Send</string>
     <string name="forgot_your_password">Forgot your password?</string>
-    <string name="reset_instructions_will_be_send_to_your_email">Reset instructions will be send to your email</string>
+    <string name="reset_instructions_will_be_send_to_your_email">Reset instructions will be sent to your email</string>
+
+    <!-- Validation -->
+    <string name="email_cant_be_blank_error">The e-mail can't be blank.</string>
+    <string name="password_error">The password must contain at least 8 characters with a letter, a number and a special character.</string>
+    <string name="invalid_email_format_error">Sorry, the email entered is invalid. Please ensure it follows the format name@example.com.</string>
+    <string name="invalid_email_or_password_error">Invalid e-mail or password.</string>
+
+    <!-- Error -->
+    <string name="user_already_exists_error">Sorry, this email is already in use. Please choose a different email.</string>
+    <string name="user_not_found_error">Sorry, we couldn't find the specified user… Please check the email address and try again.</string>
+    <string name="failed_to_login_with_account_error">There was a problem signing you in with %1$s. Please try again later or use a different login method.</string>
+    <string name="server_error">An error occurred on the server. Please try again later.</string>
+    <string name="internet_unavailable_error">The request failed due to a network issue. Please check your internet connection and try again.</string>
 
 </resources>

@@ -7,4 +7,5 @@ sealed interface LoginAction {
     data object RememberMeCredentials : LoginAction
     data class EmailResetPasswordChanged(val email: String) : LoginAction
     data object SendResetPassword : LoginAction
+    data object OnSignUpClick : LoginAction
 }

@@ -20,7 +20,6 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.composables.core.SheetDetent
 import com.composables.core.rememberModalBottomSheetState
 import com.jefisu.trackizer.auth.presentation.login.components.ForgotPasswordBottomSheet
@@ -35,6 +34,7 @@ import com.jefisu.trackizer.core.designsystem.components.TrackizerTextField
 import com.jefisu.trackizer.core.util.applyPlatformSpecific
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 import trackizer.feature.auth.generated.resources.Res
 import trackizer.feature.auth.generated.resources.forgot_password
 import trackizer.feature.auth.generated.resources.if_you_don_t_have_an_account_yet
@@ -46,23 +46,22 @@ import trackizer.feature.auth.generated.resources.sign_up
 @Composable
 fun LoginScreenRoot(
     onNavigateToRegisterScreen: () -> Unit,
-    viewModel: LoginViewModel = viewModel { LoginViewModel() },
+    viewModel: LoginViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     LoginScreen(
         state = state,
-        onAction = viewModel::onAction,
-        onSignUpClick = onNavigateToRegisterScreen,
+        onAction = { action ->
+            action.takeIf { it !is LoginAction.OnSignUpClick }
+                ?.let(viewModel::onAction)
+                ?: onNavigateToRegisterScreen()
+        },
     )
 }
 
 @Composable
-private fun LoginScreen(
-    state: LoginState,
-    onAction: (LoginAction) -> Unit,
-    onSignUpClick: () -> Unit,
-) {
+private fun LoginScreen(state: LoginState, onAction: (LoginAction) -> Unit) {
     val focusManager = LocalFocusManager.current
 
     val forgotPasswordSheetState = rememberModalBottomSheetState(initialDetent = SheetDetent.Hidden)
@@ -146,7 +145,7 @@ private fun LoginScreen(
             TrackizerButton(
                 text = stringResource(Res.string.sign_up),
                 type = ButtonType.Secondary,
-                onClick = onSignUpClick,
+                onClick = { onAction(LoginAction.OnSignUpClick) },
                 modifier = Modifier.fillMaxWidth(),
             )
         }
@@ -161,7 +160,6 @@ fun LoginScreenPreview() {
             LoginScreen(
                 state = LoginState(),
                 onAction = {},
-                onSignUpClick = {},
             )
         }
     }

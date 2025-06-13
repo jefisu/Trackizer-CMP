@@ -10,6 +10,7 @@ class CMPFeatureConventionPlugin : Plugin<Project> {
             apply<CMPConventionPlugin>()
             apply<KtlintConventionPlugin>()
             apply<DetektConventionPlugin>()
+            apply<KMPKoinConventionPlugin>()
         }
 
         dependencies {

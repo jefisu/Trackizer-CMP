@@ -3,14 +3,9 @@ package com.jefisu.trackizer.core.util
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.ime
-import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
-import androidx.compose.ui.unit.IntOffset
 
 fun Modifier.applyPlatformSpecific(
     ios: Modifier.() -> Modifier = { this },
@@ -21,15 +16,6 @@ fun Modifier.applyPlatformSpecific(
         Platform.IOS -> ios()
         Platform.ANDROID -> android()
         Platform.DESKTOP -> desktop()
-    }
-}
-
-fun Modifier.imeOffset(imeThresholdPercent: Float = 1f) = composed {
-    val imePadding = WindowInsets.ime.asPaddingValues()
-    offset {
-        IntOffset.Zero.copy(
-            y = -imePadding.calculateBottomPadding().times(imeThresholdPercent).roundToPx(),
-        )
     }
 }
 

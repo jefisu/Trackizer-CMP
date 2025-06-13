@@ -54,6 +54,8 @@ include(":composeApp")
 include(":core:designsystem")
 include(":core:util")
 include(":core:ui")
+include(":core:domain")
+include(":core:data")
 
 include(":feature:welcome")
 include(":feature:auth")

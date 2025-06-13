@@ -22,7 +22,10 @@ class CMPApplicationConventionPlugin : Plugin<Project> {
             apply<DetektConventionPlugin>()
             apply<DependencyGuardConventionPlugin>()
             apply<GitHooksConventionPlugin>()
+            apply<KMPKoinConventionPlugin>()
+            apply<KMPFirebaseConventionPlugin>()
             apply(libs.getPluginId("kotlinxSerialization"))
+            apply(libs.getPluginId("googleServices"))
         }
 
         with(extensions) {

@@ -17,8 +17,8 @@ import com.jefisu.trackizer.core.designsystem.components.ButtonType
 import com.jefisu.trackizer.core.designsystem.components.TrackizerBottomSheet
 import com.jefisu.trackizer.core.designsystem.components.TrackizerButton
 import com.jefisu.trackizer.core.designsystem.components.TrackizerTextField
+import com.jefisu.trackizer.core.ui.EventManager
 import com.jefisu.trackizer.core.ui.ObserveAsEvents
-import com.jefisu.trackizer.core.ui.UiEventManager
 import org.jetbrains.compose.resources.stringResource
 import trackizer.core.ui.generated.resources.Res as UiRes
 import trackizer.core.ui.generated.resources.email
@@ -33,7 +33,7 @@ internal fun ForgotPasswordBottomSheet(
     state: LoginState,
     onAction: (LoginAction) -> Unit,
 ) {
-    ObserveAsEvents(UiEventManager.events) { event ->
+    ObserveAsEvents(EventManager.events) { event ->
         if (event is LoginEvent.DismissForgotPasswordBottomSheet) {
             sheetState.targetDetent = SheetDetent.Hidden
         }

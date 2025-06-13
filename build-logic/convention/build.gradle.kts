@@ -26,6 +26,7 @@ dependencies {
     compileOnly(libs.ktlint.gradlePlugin)
     compileOnly(libs.detekt.gradlePlugin)
     compileOnly(libs.dependencyGuard.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
     implementation(libs.truth)
 }
 
@@ -53,6 +54,14 @@ gradlePlugin {
         register("cmp-library") {
             id = "trackizer.cmp.library"
             implementationClass = "CMPLibraryConventionPlugin"
+        }
+        register("kmp-koin") {
+            id = "trackizer.kmp.koin"
+            implementationClass = "KMPKoinConventionPlugin"
+        }
+        register("kmp-firebase") {
+            id = "trackizer.kmp.firebase"
+            implementationClass = "KMPFirebaseConventionPlugin"
         }
     }
 }

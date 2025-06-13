@@ -8,6 +8,9 @@ sealed interface Destination {
     data object AuthGraph : Destination
 
     @Serializable
+    data object AuthenticatedGraph : Destination
+
+    @Serializable
     data object WelcomeScreen : Destination
 
     @Serializable
@@ -18,4 +21,7 @@ sealed interface Destination {
 
     @Serializable
     data object RegisterScreen : Destination
+
+    @Serializable
+    data object HomeScreen : Destination
 }
