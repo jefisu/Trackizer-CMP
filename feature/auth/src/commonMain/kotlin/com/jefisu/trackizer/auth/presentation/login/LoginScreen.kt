@@ -26,7 +26,6 @@ import com.jefisu.trackizer.auth.presentation.login.components.ForgotPasswordBot
 import com.jefisu.trackizer.core.designsystem.Gray50
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
 import com.jefisu.trackizer.core.designsystem.components.ButtonType
-import com.jefisu.trackizer.core.designsystem.components.LabeledCheckbox
 import com.jefisu.trackizer.core.designsystem.components.TrackizerButton
 import com.jefisu.trackizer.core.designsystem.components.TrackizerLogoBox
 import com.jefisu.trackizer.core.designsystem.components.TrackizerPasswordTextField
@@ -39,7 +38,6 @@ import trackizer.feature.auth.generated.resources.Res
 import trackizer.feature.auth.generated.resources.forgot_password
 import trackizer.feature.auth.generated.resources.if_you_don_t_have_an_account_yet
 import trackizer.feature.auth.generated.resources.login
-import trackizer.feature.auth.generated.resources.remember_me
 import trackizer.feature.auth.generated.resources.sign_in
 import trackizer.feature.auth.generated.resources.sign_up
 
@@ -105,14 +103,7 @@ private fun LoginScreen(state: LoginState, onAction: (LoginAction) -> Unit) {
                 },
             )
             Spacer(modifier = Modifier.height(TrackizerTheme.spacing.extraSmall))
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                LabeledCheckbox(
-                    isChecked = state.rememberMeCredentials,
-                    onCheckedChange = { onAction(LoginAction.RememberMeCredentials) },
-                    label = stringResource(Res.string.remember_me),
-                )
+            Row {
                 Spacer(modifier = Modifier.weight(1f))
                 TextButton(
                     onClick = {

@@ -33,10 +33,6 @@ class LoginViewModel(
                 it.copy(password = action.password)
             }
 
-            is LoginAction.RememberMeCredentials -> _state.update {
-                it.copy(rememberMeCredentials = !it.rememberMeCredentials)
-            }
-
             is LoginAction.Login -> login()
 
             is LoginAction.EmailResetPasswordChanged -> _state.update {
