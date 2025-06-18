@@ -17,4 +17,8 @@ sealed interface AuthMessage : Message {
         data object ServerError : Error
         data object InternetUnavailable : Error
     }
+
+    sealed interface Success : AuthMessage {
+        data object PasswordResetEmailSent : Success
+    }
 }

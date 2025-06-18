@@ -9,6 +9,7 @@ import trackizer.feature.auth.generated.resources.email_cant_be_blank_error
 import trackizer.feature.auth.generated.resources.internet_unavailable_error
 import trackizer.feature.auth.generated.resources.invalid_email_format_error
 import trackizer.feature.auth.generated.resources.invalid_email_or_password_error
+import trackizer.feature.auth.generated.resources.password_reset_email_sent
 import trackizer.feature.auth.generated.resources.server_error
 import trackizer.feature.auth.generated.resources.user_already_exists_error
 import trackizer.feature.auth.generated.resources.user_not_found_error
@@ -36,5 +37,9 @@ fun AuthMessage.asMessageUi(): MessageUi = when (this) {
                 )
             }
         },
+    )
+
+    AuthMessage.Success.PasswordResetEmailSent -> MessageUi.Success(
+        UiText.StringRes(Res.string.password_reset_email_sent),
     )
 }

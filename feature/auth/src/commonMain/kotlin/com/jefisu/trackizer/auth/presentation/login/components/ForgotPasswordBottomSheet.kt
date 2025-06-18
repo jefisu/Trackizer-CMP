@@ -62,9 +62,9 @@ internal fun ForgotPasswordBottomSheet(
         Spacer(modifier = Modifier.height(TrackizerTheme.spacing.extraMedium))
         TrackizerButton(
             text = stringResource(Res.string.send),
-            onClick = { onAction(LoginAction.SendResetPassword) },
+            onClick = { onAction(LoginAction.SendResetPasswordClick) },
             type = ButtonType.Primary,
-            isLoading = state.isLoading,
+            isLoading = state.isLoadingResetPassword,
             modifier = Modifier.fillMaxWidth(),
         )
     }

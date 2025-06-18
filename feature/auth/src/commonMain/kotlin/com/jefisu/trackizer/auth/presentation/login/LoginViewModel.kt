@@ -2,7 +2,8 @@ package com.jefisu.trackizer.auth.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jefisu.trackizer.auth.domain.usecase.UserLoginUseCase
+import com.jefisu.trackizer.auth.domain.usecase.LoginUserUseCase
+import com.jefisu.trackizer.auth.domain.usecase.SendResetPasswordLinkUseCase
 import com.jefisu.trackizer.auth.presentation.util.AuthEvent
 import com.jefisu.trackizer.auth.presentation.util.asMessageUi
 import com.jefisu.trackizer.core.ui.EventManager
@@ -17,7 +18,8 @@ import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
 class LoginViewModel(
-    private val userLoginUseCase: UserLoginUseCase,
+    private val loginUserUseCase: LoginUserUseCase,
+    private val sendResetPasswordLinkUseCase: SendResetPasswordLinkUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(LoginState())
@@ -39,7 +41,7 @@ class LoginViewModel(
                 it.copy(emailResetPassword = action.email)
             }
 
-            is LoginAction.SendResetPassword -> sendResetPassword()
+            is LoginAction.SendResetPasswordClick -> sendResetPassword()
 
             else -> Unit
         }
@@ -49,7 +51,7 @@ class LoginViewModel(
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
 
-            userLoginUseCase
+            loginUserUseCase
                 .execute(_state.value.email, _state.value.password)
                 .onSuccess {
                     EventManager.sendEvent(AuthEvent.UserAuthenticated)
@@ -63,5 +65,19 @@ class LoginViewModel(
     }
 
     private fun sendResetPassword() {
+        viewModelScope.launch {
+            _state.update { it.copy(isLoadingResetPassword = true) }
+
+            sendResetPasswordLinkUseCase
+                .execute(_state.value.emailResetPassword)
+                .onSuccess { authSuccess ->
+                    MessageManager.showMessage(authSuccess.asMessageUi())
+                }
+                .onError { authError ->
+                    MessageManager.showMessage(authError.asMessageUi())
+                }
+
+            _state.update { it.copy(isLoadingResetPassword = false) }
+        }
     }
 }

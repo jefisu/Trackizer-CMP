@@ -25,6 +25,7 @@
     <string name="send">Send</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="reset_instructions_will_be_send_to_your_email">Reset instructions will be sent to your email</string>
+    <string name="password_reset_email_sent">Instructions to reset your password have been sent to the specified email address. Please check your inbox.</string>
 
     <!-- Validation -->
     <string name="email_cant_be_blank_error">The e-mail can't be blank.</string>

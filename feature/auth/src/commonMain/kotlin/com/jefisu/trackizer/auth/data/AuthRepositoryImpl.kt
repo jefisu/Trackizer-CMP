@@ -32,6 +32,21 @@ class AuthRepositoryImpl(
         )
     }
 
+    override suspend fun resetPassword(
+        email: String,
+    ): Result<AuthMessage.Success, AuthMessage.Error> {
+        val result = runCatching { firebaseAuth.sendPasswordResetEmail(email) }
+        return result.fold(
+            onSuccess = {
+                Result.Success(AuthMessage.Success.PasswordResetEmailSent)
+            },
+            onFailure = {
+                coroutineContext.ensureActive()
+                Result.Error(it.toAuthMessage())
+            },
+        )
+    }
+
     private fun Throwable.toAuthMessage(): AuthMessage.Error {
         return when (this) {
             is FirebaseAuthInvalidCredentialsException -> AuthMessage.Error.InvalidCredentials
