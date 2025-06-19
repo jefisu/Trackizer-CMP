@@ -2,10 +2,8 @@ package com.jefisu.trackizer.core.designsystem.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -64,7 +62,6 @@ fun TrackizerPasswordTextField(
                     .onFocusChanged { isFocused = it.isFocused },
             )
         }
-        Spacer(Modifier.width(TrackizerTheme.spacing.small))
         if (text.isNotEmpty()) {
             IconButton(
                 onClick = { onTextChange("") },

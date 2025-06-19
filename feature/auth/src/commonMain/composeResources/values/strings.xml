@@ -29,7 +29,11 @@
 
     <!-- Validation -->
     <string name="email_cant_be_blank_error">The e-mail can't be blank.</string>
-    <string name="password_error">The password must contain at least 8 characters with a letter, a number and a special character.</string>
+    <string name="password_too_short_error">Password must be at least 8 characters long.</string>
+    <string name="password_no_uppercase_letter_error">Password must contain at least one uppercase letter.</string>
+    <string name="password_no_lowercase_letter_error">Password must contain at least one lowercase letter.</string>
+    <string name="password_no_digit_error">Password must contain at least one number.</string>
+    <string name="password_no_special_character_error">Password must contain at least one special character.</string>
     <string name="invalid_email_format_error">Sorry, the email entered is invalid. Please ensure it follows the format name@example.com.</string>
     <string name="invalid_email_or_password_error">Invalid e-mail or password.</string>
 

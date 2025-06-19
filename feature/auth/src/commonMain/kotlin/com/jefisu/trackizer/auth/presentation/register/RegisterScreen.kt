@@ -30,6 +30,7 @@ import com.jefisu.trackizer.core.designsystem.components.TrackizerTextField
 import com.jefisu.trackizer.core.util.applyPlatformSpecific
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 import trackizer.core.ui.generated.resources.Res as UiRes
 import trackizer.core.ui.generated.resources.email
 import trackizer.feature.auth.generated.resources.Res
@@ -40,7 +41,7 @@ import trackizer.feature.auth.generated.resources.use_8_or_more_characters
 
 @Composable
 fun RegisterScreenRoot(
-    viewModel: RegisterViewModel = viewModel { RegisterViewModel() },
+    viewModel: RegisterViewModel = koinViewModel(),
     onNavigateToLoginScreen: () -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()

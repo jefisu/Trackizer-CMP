@@ -6,5 +6,6 @@ typealias EmptyAuthResult = Result<Unit, AuthMessage.Error>
 
 interface AuthRepository {
     suspend fun logIn(email: String, password: String): EmptyAuthResult
+    suspend fun register(email: String, password: String): EmptyAuthResult
     suspend fun resetPassword(email: String): Result<AuthMessage.Success, AuthMessage.Error>
 }

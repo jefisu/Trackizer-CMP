@@ -74,7 +74,6 @@ fun TrackizerTextField(
                 .onFocusChanged { isFocused = it.isFocused },
         )
         if (text.isNotEmpty()) {
-            Spacer(Modifier.width(TrackizerTheme.spacing.small))
             IconButton(onClick = { onTextChange("") }) {
                 Icon(
                     imageVector = FeatherIcons.X,

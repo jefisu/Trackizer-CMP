@@ -32,6 +32,17 @@ class AuthRepositoryImpl(
         )
     }
 
+    override suspend fun register(email: String, password: String): EmptyAuthResult {
+        val result = runCatching { firebaseAuth.createUserWithEmailAndPassword(email, password) }
+        return result.fold(
+            onSuccess = { Result.Success(Unit) },
+            onFailure = {
+                coroutineContext.ensureActive()
+                Result.Error(it.toAuthMessage())
+            },
+        )
+    }
+
     override suspend fun resetPassword(
         email: String,
     ): Result<AuthMessage.Success, AuthMessage.Error> {

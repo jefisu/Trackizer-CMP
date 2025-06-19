@@ -1,6 +1,7 @@
 package com.jefisu.trackizer.auth.domain
 
 import com.jefisu.trackizer.auth.domain.validation.EmailValidationError
+import com.jefisu.trackizer.auth.domain.validation.PasswordValidationError
 import com.jefisu.trackizer.core.util.Message
 
 sealed interface AuthMessage : Message {
@@ -9,6 +10,7 @@ sealed interface AuthMessage : Message {
 
         sealed interface Validation : Error {
             data class Email(val error: EmailValidationError) : Validation
+            data class Password(val error: PasswordValidationError) : Validation
         }
 
         data object InvalidCredentials : Error
