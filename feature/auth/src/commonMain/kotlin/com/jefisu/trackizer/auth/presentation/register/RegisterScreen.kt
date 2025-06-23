@@ -19,6 +19,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.jefisu.trackizer.auth.di.rememberAuthScope
 import com.jefisu.trackizer.auth.presentation.register.components.PasswordSecurityLevel
 import com.jefisu.trackizer.core.designsystem.Gray50
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
@@ -41,7 +42,7 @@ import trackizer.feature.auth.generated.resources.use_8_or_more_characters
 
 @Composable
 fun RegisterScreenRoot(
-    viewModel: RegisterViewModel = koinViewModel(),
+    viewModel: RegisterViewModel = koinViewModel(scope = rememberAuthScope()),
     onNavigateToLoginScreen: () -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()

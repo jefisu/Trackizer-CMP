@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.composables.core.SheetDetent
 import com.composables.core.rememberModalBottomSheetState
+import com.jefisu.trackizer.auth.di.rememberAuthScope
 import com.jefisu.trackizer.auth.presentation.login.components.ForgotPasswordBottomSheet
 import com.jefisu.trackizer.core.designsystem.Gray50
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
@@ -44,7 +45,7 @@ import trackizer.feature.auth.generated.resources.sign_up
 @Composable
 fun LoginScreenRoot(
     onNavigateToRegisterScreen: () -> Unit,
-    viewModel: LoginViewModel = koinViewModel(),
+    viewModel: LoginViewModel = koinViewModel(scope = rememberAuthScope()),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 

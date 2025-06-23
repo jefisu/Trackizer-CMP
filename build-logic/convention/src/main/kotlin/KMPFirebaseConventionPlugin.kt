@@ -9,9 +9,8 @@ class KMPFirebaseConventionPlugin : Plugin<Project> {
             "commonMainImplementation"(libs.findLibrary("firebase-common").get())
             "commonMainImplementation"(libs.findLibrary("firebase-auth").get())
 
+            // Added to avoid Ktlint formatting task crashing when running.
             "androidMainImplementation"(platform(libs.findLibrary("firebase-bom-android").get()))
-            "androidMainImplementation"(libs.findLibrary("firebase-common-android").get())
-            "androidMainImplementation"(libs.findLibrary("firebase-auth-android").get())
         }
     }
 }

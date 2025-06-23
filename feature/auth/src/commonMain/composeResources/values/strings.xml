@@ -43,5 +43,5 @@
     <string name="failed_to_login_with_account_error">There was a problem signing you in with %1$s. Please try again later or use a different login method.</string>
     <string name="server_error">An error occurred on the server. Please try again later.</string>
     <string name="internet_unavailable_error">The request failed due to a network issue. Please check your internet connection and try again.</string>
-
+    <string name="login_with_third_party_error">There was a problem signing you in with %1$s. Please try again later.</string>
 </resources>

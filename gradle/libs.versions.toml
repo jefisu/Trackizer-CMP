@@ -23,10 +23,13 @@ composeIcons = "1.1.1"
 compose-unstyled = "1.31.1"
 firebase-kotlin-sdk = "2.1.0"
 googleServices = "4.4.2"
+credentials = "1.5.0"
+identityGoogleId = "1.1.1"
 firebase-bom = "33.15.0"
 koin = "4.1.0"
 koinAnnotations = "2.1.0"
 ksp = "2.1.21-2.0.2"
+buildKonfig = "0.17.1"
 
 packageName = "com.jefisu.trackizer"
 application-version = "1.0.0"
@@ -51,11 +54,12 @@ composeIcons-feather = { module = "br.com.devsrsouza.compose.icons:feather", ver
 compose-unstyled = { module = "com.composables:core", version.ref = "compose-unstyled" }
 
 # Firebase
+credentials = { module = "androidx.credentials:credentials", version.ref = "credentials" }
+credentials-play-services-auth = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentials" }
+identity-googleId = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "identityGoogleId" }
 firebase-common = { module = "dev.gitlive:firebase-common", version.ref = "firebase-kotlin-sdk" }
 firebase-auth = { module = "dev.gitlive:firebase-auth", version.ref = "firebase-kotlin-sdk" }
 firebase-bom-android = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
-firebase-common-android = { module = "com.google.firebase:firebase-common-ktx" }
-firebase-auth-android = { module = "com.google.firebase:firebase-auth-ktx" }
 
 # Koin Dependency Injection
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
@@ -84,6 +88,7 @@ android-tools-common = { module = "com.android.tools:common", version.ref = "and
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 dependencyGuard-gradlePlugin = { module = "com.dropbox.dependency-guard:com.dropbox.dependency-guard.gradle.plugin", version.ref = "dependencyGuard" }
+buildKonfig-gradlePlugin = { module = "com.codingfeline.buildkonfig:com.codingfeline.buildkonfig.gradle.plugin", version.ref = "buildKonfig" }
 
 [plugins]
 # Android
@@ -95,7 +100,8 @@ googleServices = { id = "com.google.gms.google-services", version.ref = "googleS
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-
+buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
+kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 
 # Compose Multiplatform (CMP)
 composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" }

@@ -23,11 +23,8 @@ import com.composeunstyled.Text
 import com.jefisu.trackizer.auth.presentation.login.LoginScreenRoot
 import com.jefisu.trackizer.auth.presentation.register.RegisterScreenRoot
 import com.jefisu.trackizer.auth.presentation.thirdpartyauth.ThirdPartyAuthRoot
-import com.jefisu.trackizer.auth.presentation.util.AuthEvent
-import com.jefisu.trackizer.core.ui.EventManager
 import com.jefisu.trackizer.core.ui.LocalAnimatedContentScope
 import com.jefisu.trackizer.core.ui.LocalSharedTransitionScope
-import com.jefisu.trackizer.core.ui.ObserveAsEvents
 import com.jefisu.trackizer.welcome.WelcomeScreenRoot
 
 @Composable
@@ -55,16 +52,6 @@ fun NavGraph(startDestination: Destination, navController: NavHostController) {
         }
     }
     val navAnimation = remember { NavAnimation(navAnimationConfig) }
-
-    ObserveAsEvents(EventManager.events) { event ->
-        if (event is AuthEvent.UserAuthenticated) {
-            navController.navigate(Destination.AuthenticatedGraph) {
-                popUpTo<Destination.AuthGraph> {
-                    inclusive = true
-                }
-            }
-        }
-    }
 
     SafeNavigationArea(
         navController = navController,

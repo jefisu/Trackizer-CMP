@@ -16,6 +16,7 @@ class KMPLibraryConventionPlugin : Plugin<Project> {
             apply<KMPConventionPlugin>()
             apply<KtlintConventionPlugin>()
             apply<DetektConventionPlugin>()
+            apply<KMPBuildKonfigConventionPlugin>()
         }
 
         extensions.configure<LibraryExtension> {

@@ -1,13 +1,14 @@
 package com.jefisu.trackizer.auth.domain.usecase
 
+import com.jefisu.trackizer.auth.di.AuthScope
 import com.jefisu.trackizer.auth.domain.AuthMessage
 import com.jefisu.trackizer.auth.domain.AuthRepository
 import com.jefisu.trackizer.auth.domain.validation.EmailValidator
 import com.jefisu.trackizer.auth.domain.validation.PasswordValidator
 import com.jefisu.trackizer.core.util.Result
-import org.koin.core.annotation.Single
+import org.koin.core.annotation.Scope
 
-@Single
+@Scope(AuthScope::class)
 class RegisterUserUseCase(
     private val repository: AuthRepository,
     private val emailValidator: EmailValidator,

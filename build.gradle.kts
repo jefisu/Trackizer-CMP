@@ -14,6 +14,8 @@ plugins {
     alias(libs.plugins.kotlinxSerialization) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.googleServices) apply false
+    alias(libs.plugins.buildKonfig) apply false
+    alias(libs.plugins.kotlinCocoapods) apply false
 }
 
 // Task to print all the module paths in the project e.g. :core:data

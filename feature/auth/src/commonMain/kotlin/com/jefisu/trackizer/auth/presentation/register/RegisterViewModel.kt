@@ -2,6 +2,7 @@ package com.jefisu.trackizer.auth.presentation.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jefisu.trackizer.auth.di.AuthScope
 import com.jefisu.trackizer.auth.domain.usecase.RegisterUserUseCase
 import com.jefisu.trackizer.auth.domain.validation.PASSWORD_MAX_LENGTH
 import com.jefisu.trackizer.auth.presentation.register.util.getSecurityLevel
@@ -24,7 +25,9 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
+import org.koin.core.annotation.Scope
 
+@Scope(AuthScope::class)
 @KoinViewModel
 class RegisterViewModel(
     private val registerUserUseCase: RegisterUserUseCase,

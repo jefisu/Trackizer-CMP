@@ -27,6 +27,7 @@ dependencies {
     compileOnly(libs.detekt.gradlePlugin)
     compileOnly(libs.dependencyGuard.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.buildKonfig.gradlePlugin)
     implementation(libs.truth)
 }
 

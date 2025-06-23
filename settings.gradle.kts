@@ -56,6 +56,7 @@ include(":core:util")
 include(":core:ui")
 include(":core:domain")
 include(":core:data")
+include(":core:platform")
 
 include(":feature:welcome")
 include(":feature:auth")

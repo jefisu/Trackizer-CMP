@@ -1,12 +1,13 @@
 package com.jefisu.trackizer.auth.domain.validation
 
+import com.jefisu.trackizer.auth.di.AuthScope
 import com.jefisu.trackizer.core.util.Message
 import com.jefisu.trackizer.core.util.ValidationResult
 import com.jefisu.trackizer.core.util.ValidationRule
 import com.jefisu.trackizer.core.util.Validator
-import org.koin.core.annotation.Single
+import org.koin.core.annotation.Scope
 
-@Single
+@Scope(AuthScope::class)
 class EmailValidator : Validator<String, EmailValidationError> {
     override fun validate(value: String): ValidationResult<EmailValidationError> {
         val errors = validationRules

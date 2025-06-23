@@ -11,6 +11,8 @@ kotlin {
             implementation(projects.core.ui)
             implementation(projects.core.domain)
             implementation(projects.core.data)
+            implementation(projects.core.util)
+            implementation(projects.core.platform)
 
             implementation(projects.feature.welcome)
             implementation(projects.feature.auth)

@@ -3,6 +3,7 @@ package com.jefisu.trackizer.auth.presentation.util
 import com.jefisu.trackizer.auth.domain.AuthMessage
 import com.jefisu.trackizer.auth.domain.validation.EmailValidationError
 import com.jefisu.trackizer.auth.domain.validation.PasswordValidationError
+import com.jefisu.trackizer.core.ui.Argument
 import com.jefisu.trackizer.core.ui.MessageUi
 import com.jefisu.trackizer.core.ui.UiText
 import trackizer.feature.auth.generated.resources.Res
@@ -10,6 +11,7 @@ import trackizer.feature.auth.generated.resources.email_cant_be_blank_error
 import trackizer.feature.auth.generated.resources.internet_unavailable_error
 import trackizer.feature.auth.generated.resources.invalid_email_format_error
 import trackizer.feature.auth.generated.resources.invalid_email_or_password_error
+import trackizer.feature.auth.generated.resources.login_with_third_party_error
 import trackizer.feature.auth.generated.resources.password_no_digit_error
 import trackizer.feature.auth.generated.resources.password_no_lowercase_letter_error
 import trackizer.feature.auth.generated.resources.password_no_special_character_error
@@ -56,6 +58,11 @@ private fun AuthMessage.Error.toUiText(): UiText = when (this) {
     is AuthMessage.Error.ServerError -> UiText.StringRes(Res.string.server_error)
     is AuthMessage.Error.UserAlreadyExists -> UiText.StringRes(Res.string.user_already_exists_error)
     is AuthMessage.Error.UserNotFound -> UiText.StringRes(Res.string.user_not_found_error)
+    is AuthMessage.Error.ThirdPartyProvider -> UiText.StringRes(
+        res = Res.string.login_with_third_party_error,
+        args = arrayOf(Argument(type.displayName)),
+    )
+    is AuthMessage.Error.Dynamic -> UiText.DynamicString(message)
     is AuthMessage.Error.Validation.Email -> toUiText()
     is AuthMessage.Error.Validation.Password -> toUiText()
 }

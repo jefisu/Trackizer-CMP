@@ -2,6 +2,7 @@ package com.jefisu.trackizer.auth.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jefisu.trackizer.auth.di.AuthScope
 import com.jefisu.trackizer.auth.domain.usecase.LoginUserUseCase
 import com.jefisu.trackizer.auth.domain.usecase.SendResetPasswordLinkUseCase
 import com.jefisu.trackizer.auth.presentation.util.AuthEvent
@@ -15,7 +16,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
+import org.koin.core.annotation.Scope
 
+@Scope(AuthScope::class)
 @KoinViewModel
 class LoginViewModel(
     private val loginUserUseCase: LoginUserUseCase,
