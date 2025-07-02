@@ -35,6 +35,7 @@ fun NavGraph(startDestination: Destination, navController: NavHostController) {
             Destination.WelcomeScreen to listOf(
                 AnimationTarget(Destination.LoginScreen, AnimationType.BOTTOM_TO_TOP),
                 AnimationTarget(Destination.ThirdPartyAuthScreen, AnimationType.BOTTOM_TO_TOP),
+                AnimationTarget(Destination.RegisterScreen, AnimationType.BOTTOM_TO_TOP),
             ),
             Destination.ThirdPartyAuthScreen to listOf(
                 AnimationTarget(Destination.RegisterScreen, AnimationType.RIGHT_TO_LEFT),
@@ -81,23 +82,27 @@ fun NavGraph(startDestination: Destination, navController: NavHostController) {
 }
 
 private fun NavGraphBuilder.authGraph(navController: NavController) {
+    fun navigate(destination: Destination) {
+        navController.navigateSingleTopTo<Destination.WelcomeScreen>(destination)
+    }
+
     navigation<Destination.AuthGraph>(
         startDestination = Destination.WelcomeScreen,
     ) {
         animatedScreen<Destination.WelcomeScreen> {
             WelcomeScreenRoot(
                 onNavigateToSignInScreen = {
-                    navController.navigate(Destination.LoginScreen)
+                    navigate(Destination.LoginScreen)
                 },
                 onNavigateToSignUpScreen = {
-                    navController.navigate(Destination.ThirdPartyAuthScreen)
+                    navigate(Destination.ThirdPartyAuthScreen)
                 },
             )
         }
         animatedScreen<Destination.ThirdPartyAuthScreen> {
             ThirdPartyAuthRoot(
                 onNavigateToRegisterScreen = {
-                    navController.navigate(Destination.RegisterScreen)
+                    navigate(Destination.RegisterScreen)
                 },
             )
         }
@@ -105,7 +110,7 @@ private fun NavGraphBuilder.authGraph(navController: NavController) {
             LoginScreenRoot(
                 viewModel = sharedViewModel(navController, rememberAuthScope()),
                 onNavigateToRegisterScreen = {
-                    navController.navigate(Destination.ThirdPartyAuthScreen)
+                    navigate(Destination.ThirdPartyAuthScreen)
                 },
             )
         }
@@ -113,7 +118,7 @@ private fun NavGraphBuilder.authGraph(navController: NavController) {
             RegisterScreenRoot(
                 viewModel = sharedViewModel(navController, rememberAuthScope()),
                 onNavigateToLoginScreen = {
-                    navController.navigate(Destination.LoginScreen)
+                    navigate(Destination.LoginScreen)
                 },
             )
         }

@@ -29,3 +29,10 @@ inline fun <reified T : ViewModel> NavBackStackEntry.sharedViewModel(
         scope = scope,
     )
 }
+
+inline fun <reified T : Destination> NavController.navigateSingleTopTo(destination: Destination) {
+    navigate(destination) {
+        popUpTo<T>()
+        launchSingleTop = true
+    }
+}
