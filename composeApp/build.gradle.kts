@@ -33,6 +33,12 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = libs.versions.application.version.get().filter(Char::isDigit).toInt()
         versionName = libs.versions.application.version.get()
+
+        val localProperties = loadProperties("local.properties")
+        manifestPlaceholders["FACEBOOK_APPLICATION_ID"] =
+            localProperties["FACEBOOK_APPLICATION_ID"] ?: ""
+        manifestPlaceholders["FACEBOOK_CLIENT_TOKEN"] =
+            localProperties["FACEBOOK_CLIENT_TOKEN"] ?: ""
     }
 
     packaging {

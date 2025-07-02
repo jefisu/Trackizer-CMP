@@ -16,6 +16,7 @@ kotlin {
             implementation(libs.credentials)
             implementation(libs.credentials.play.services.auth)
             implementation(libs.identity.googleId)
+            api(libs.facebook.login)
         }
 
         all {
