@@ -20,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.composeunstyled.Text
+import com.jefisu.trackizer.auth.di.rememberAuthScope
 import com.jefisu.trackizer.auth.presentation.login.LoginScreenRoot
 import com.jefisu.trackizer.auth.presentation.register.RegisterScreenRoot
 import com.jefisu.trackizer.auth.presentation.thirdpartyauth.ThirdPartyAuthRoot
@@ -102,6 +103,7 @@ private fun NavGraphBuilder.authGraph(navController: NavController) {
         }
         animatedScreen<Destination.LoginScreen> {
             LoginScreenRoot(
+                viewModel = sharedViewModel(navController, rememberAuthScope()),
                 onNavigateToRegisterScreen = {
                     navController.navigate(Destination.ThirdPartyAuthScreen)
                 },
@@ -109,6 +111,7 @@ private fun NavGraphBuilder.authGraph(navController: NavController) {
         }
         animatedScreen<Destination.RegisterScreen> {
             RegisterScreenRoot(
+                viewModel = sharedViewModel(navController, rememberAuthScope()),
                 onNavigateToLoginScreen = {
                     navController.navigate(Destination.LoginScreen)
                 },
