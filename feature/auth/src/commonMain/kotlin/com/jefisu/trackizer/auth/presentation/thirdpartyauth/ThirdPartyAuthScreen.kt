@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.composeunstyled.Text
 import com.jefisu.trackizer.auth.di.rememberAuthScope
+import com.jefisu.trackizer.core.designsystem.FacebookBorderGradient
 import com.jefisu.trackizer.core.designsystem.FacebookColor
 import com.jefisu.trackizer.core.designsystem.Gray50
 import com.jefisu.trackizer.core.designsystem.Gray80
@@ -92,6 +93,7 @@ private fun ThirdPartyAuthScreen(
                         type = ButtonType.Dynamic(
                             container = FacebookColor,
                             content = Color.White,
+                            border = FacebookBorderGradient,
                         ),
                         leadingIconRes = Res.drawable.ic_facebook,
                         isLoading = state.providerLoading == AuthProviderType.FACEBOOK,

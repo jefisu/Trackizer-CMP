@@ -125,12 +125,16 @@ sealed class ButtonType(
         ),
     )
 
-    data class Dynamic(val container: Color, val content: Color) :
-        ButtonType(
-            containerColor = container,
-            contentColor = content,
-            hasShadow = true,
-        )
+    data class Dynamic(
+        val container: Color,
+        val content: Color,
+        val border: Brush = SolidColor(Color.Transparent),
+    ) : ButtonType(
+        containerColor = container,
+        contentColor = content,
+        hasShadow = true,
+        borderGradient = border,
+    )
 }
 
 private class ButtonPreviewParameter : PreviewParameterProvider<ButtonType> {
