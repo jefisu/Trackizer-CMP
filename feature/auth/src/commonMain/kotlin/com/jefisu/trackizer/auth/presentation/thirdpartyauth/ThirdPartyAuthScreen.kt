@@ -33,10 +33,10 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 import trackizer.feature.auth.generated.resources.Res
 import trackizer.feature.auth.generated.resources.by_registering_you_agree
+import trackizer.feature.auth.generated.resources.continue_with
 import trackizer.feature.auth.generated.resources.ic_facebook
 import trackizer.feature.auth.generated.resources.ic_google
 import trackizer.feature.auth.generated.resources.or
-import trackizer.feature.auth.generated.resources.sign_up_with
 
 @Composable
 fun ThirdPartyAuthRoot(
@@ -73,7 +73,7 @@ private fun ThirdPartyAuthScreen(
                 ),
         ) {
             TrackizerButton(
-                text = stringResource(Res.string.sign_up_with, "Google"),
+                text = stringResource(Res.string.continue_with, "Google"),
                 type = ButtonType.Dynamic(
                     container = Color.White,
                     content = Gray80,
@@ -89,7 +89,7 @@ private fun ThirdPartyAuthScreen(
                 android = {
                     Spacer(Modifier.height(TrackizerTheme.spacing.medium))
                     TrackizerButton(
-                        text = stringResource(Res.string.sign_up_with, "Facebook"),
+                        text = stringResource(Res.string.continue_with, "Facebook"),
                         type = ButtonType.Dynamic(
                             container = FacebookColor,
                             content = Color.White,
@@ -114,7 +114,7 @@ private fun ThirdPartyAuthScreen(
             )
             Spacer(Modifier.height(TrackizerTheme.spacing.large))
             TrackizerButton(
-                text = stringResource(Res.string.sign_up_with, "E-mail"),
+                text = stringResource(Res.string.continue_with, "E-mail"),
                 type = ButtonType.Secondary,
                 onClick = { onAction(ThirdPartyAuthAction.OnSignUpEmailClick) },
                 modifier = Modifier.fillMaxWidth(),
