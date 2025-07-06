@@ -31,6 +31,10 @@ koinAnnotations = "2.1.0"
 ksp = "2.1.21-2.0.2"
 buildKonfig = "0.17.1"
 facebook = "latest.release"
+kotlinx-coroutines = "1.10.1"
+assertk = "0.28.1"
+turbine = "1.2.1"
+ultron = "2.6.0-alpha03"
 
 packageName = "com.jefisu.trackizer"
 application-version = "1.0.0"
@@ -39,6 +43,7 @@ application-version = "1.0.0"
 # Kotlin Multiplatform (KMP)
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 
 # AndroidX
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
@@ -72,10 +77,15 @@ koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel" }
 koin-compose-viewmodel-navigation = { module = "io.insert-koin:koin-compose-viewmodel-navigation" }
 koin-annotations-bom = { module = "io.insert-koin:koin-annotations-bom", version.ref = "koinAnnotations" }
 koin-annotations = { module = "io.insert-koin:koin-annotations" }
-koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koinAnnotations"  }
+koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koinAnnotations" }
 
 # Testing
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+assertk = { module = "com.willowtreeapps.assertk:assertk", version.ref = "assertk" }
+ultron-android = { module = "com.atiurin:ultron-android", version.ref = "ultron" }
+ultron-compose = { module = "com.atiurin:ultron-compose", version.ref = "ultron" }
+ultron-allure = { module = "com.atiurin:ultron-allure", version.ref = "ultron" }
 
 # Code Quality & Formatting
 twitter-detekt-compose = { module = "com.twitter.compose.rules:detekt", version.ref = "twitter-detekt-compose" }
@@ -123,3 +133,16 @@ trackizer-kmp-library = { id = "trackizer.kmp.library", version = "unspecified" 
 trackizer-cmp-library = { id = "trackizer.cmp.library", version = "unspecified" }
 trackizer-kmp-koin = { id = "trackizer.kmp.koin", version = "unspecified" }
 trackizer-kmp-firebase = { id = "trackizer.kmp.firebase", version = "unspecified" }
+
+[bundles]
+test-kmp = [
+    "kotlin-test",
+    "truth",
+    "turbine",
+    "assertk",
+    "ultron-compose",
+]
+test-android = [
+    "ultron-android",
+    "ultron-allure"
+]

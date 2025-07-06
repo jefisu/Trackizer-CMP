@@ -8,6 +8,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 
 class KMPLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = with(target) {
@@ -31,6 +32,13 @@ class KMPLibraryConventionPlugin : Plugin<Project> {
                 .drop(1).distinct()
                 .joinToString(separator = "_")
                 .lowercase() + "_"
+        }
+
+        dependencies {
+            "commonMainImplementation"(libs.findLibrary("kotlinx-coroutines-core").get())
+
+            "commonTestImplementation"(libs.findBundle("test-kmp").get())
+            "androidTestImplementation"(libs.findBundle("test-android").get())
         }
     }
 }
