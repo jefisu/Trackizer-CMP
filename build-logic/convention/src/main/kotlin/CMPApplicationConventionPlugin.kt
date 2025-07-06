@@ -41,6 +41,8 @@ class CMPApplicationConventionPlugin : Plugin<Project> {
             "commonMainImplementation"(libs.findLibrary("kotlinx-serialization").get())
 
             "androidMainImplementation"(libs.findLibrary("androidx-activity-compose").get())
+
+            "commonTestImplementation"(project(":testUtil"))
         }
     }
 }

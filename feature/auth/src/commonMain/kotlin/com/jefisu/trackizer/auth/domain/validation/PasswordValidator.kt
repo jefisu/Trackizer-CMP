@@ -15,7 +15,7 @@ class PasswordValidator : Validator<String, List<PasswordValidationError>> {
             .map { it.error }
         return ValidationResult(
             successfully = errors.isEmpty(),
-            error = errors,
+            error = errors.ifEmpty { null },
         )
     }
 }
