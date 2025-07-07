@@ -35,6 +35,7 @@ kotlinx-coroutines = "1.10.1"
 assertk = "0.28.1"
 turbine = "1.2.1"
 ultron = "2.6.0-alpha03"
+composeTest = "1.8.3"
 
 packageName = "com.jefisu.trackizer"
 application-version = "1.0.0"
@@ -86,6 +87,8 @@ assertk = { module = "com.willowtreeapps.assertk:assertk", version.ref = "assert
 ultron-android = { module = "com.atiurin:ultron-android", version.ref = "ultron" }
 ultron-compose = { module = "com.atiurin:ultron-compose", version.ref = "ultron" }
 ultron-allure = { module = "com.atiurin:ultron-allure", version.ref = "ultron" }
+compose-ui-test-junit4-android = { module = "androidx.compose.ui:ui-test-junit4-android", version.ref = "composeTest" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "composeTest" }
 
 # Code Quality & Formatting
 twitter-detekt-compose = { module = "com.twitter.compose.rules:detekt", version.ref = "twitter-detekt-compose" }
