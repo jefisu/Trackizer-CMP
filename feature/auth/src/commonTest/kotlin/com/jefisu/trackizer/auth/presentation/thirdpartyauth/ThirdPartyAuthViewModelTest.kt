@@ -24,12 +24,12 @@ class ThirdPartyAuthViewModelTest {
     }
 
     @Test
-    fun `google provider click should toggle loading state for google provider`() = runTest {
+    fun googleProviderClickShouldToggleLoadingStateForGoogleProvider() = runTest {
         testProviderLoadingFlow(AuthProviderType.GOOGLE)
     }
 
     @Test
-    fun `facebook provider click should toggle loading state for facebook provider`() = runTest {
+    fun facebookProviderClickShouldToggleLoadingStateForFacebookProvider() = runTest {
         testProviderLoadingFlow(AuthProviderType.FACEBOOK)
     }
 

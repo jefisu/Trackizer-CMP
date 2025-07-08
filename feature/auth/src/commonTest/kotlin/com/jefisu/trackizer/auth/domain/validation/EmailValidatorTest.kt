@@ -21,19 +21,19 @@ class EmailValidatorTest {
     }
 
     @Test
-    fun `validate empty email should return blank error`() {
+    fun validateEmptyEmailShouldReturnBlankError() {
         val result = validateEmail(EMPTY_EMAIL)
         assertThat(result.error).isEqualTo(EmailValidationError.CAN_T_BE_BLANK)
     }
 
     @Test
-    fun `validate email with invalid format should return format error`() {
+    fun validateEmailWithInvalidFormatShouldReturnFormatError() {
         val result = validateEmail(INVALID_EMAIL)
         assertThat(result.error).isEqualTo(EmailValidationError.INVALID_FORMAT)
     }
 
     @Test
-    fun `validate email with valid format should succeed`() {
+    fun validateEmailWithValidFormatShouldSucceed() {
         val result = validateEmail(VALID_EMAIL)
         assertThat(result.successfully).isTrue()
         assertThat(result.error).isNull()

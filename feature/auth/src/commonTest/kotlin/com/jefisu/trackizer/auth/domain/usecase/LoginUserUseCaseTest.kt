@@ -25,7 +25,7 @@ class LoginUserUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `login with empty email should return validation error`() = runTest {
+    fun loginWithEmptyEmailShouldReturnValidationError() = runTest {
         val result = executeLogin(email = EMPTY_EMAIL, password = VALID_PASSWORD)
 
         assertThat(result).isEqualTo(
@@ -34,7 +34,7 @@ class LoginUserUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `login with invalid email format should return validation error`() = runTest {
+    fun loginWithInvalidEmailFormatShouldReturnValidationError() = runTest {
         val result = executeLogin(email = INVALID_EMAIL, password = VALID_PASSWORD)
 
         assertThat(result).isEqualTo(
@@ -43,14 +43,14 @@ class LoginUserUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `login with empty password should return invalid credentials error`() = runTest {
+    fun loginWithEmptyPasswordShouldReturnInvalidCredentialsError() = runTest {
         val result = executeLogin(email = VALID_EMAIL, password = EMPTY_PASSWORD)
 
         assertThat(result).isEqualTo(expectedInvalidCredentialsError())
     }
 
     @Test
-    fun `login with valid credentials for existing user should succeed`() = runTest {
+    fun loginWithValidCredentialsForExistingUserShouldSucceed() = runTest {
         givenUserExists(email = VALID_EMAIL, password = VALID_PASSWORD)
 
         val result = executeLogin(email = VALID_EMAIL, password = VALID_PASSWORD)

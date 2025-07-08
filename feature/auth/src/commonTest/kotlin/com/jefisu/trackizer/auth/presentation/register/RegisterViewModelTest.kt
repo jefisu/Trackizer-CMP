@@ -42,19 +42,18 @@ class RegisterViewModelTest {
     }
 
     @Test
-    fun `register action with valid data should toggle loading state from false to true to false`() =
-        runTest {
-            viewModel.state.test {
-                assertThat(awaitItem().isLoading).isFalse()
+    fun registerActionWithValidDataShouldToggleLoadingStateFromFalseToTrueToFalse() = runTest {
+        viewModel.state.test {
+            assertThat(awaitItem().isLoading).isFalse()
 
-                performRegisterAction()
-                assertThat(awaitItem().isLoading).isTrue()
-                assertThat(awaitItem().isLoading).isFalse()
-            }
+            performRegisterAction()
+            assertThat(awaitItem().isLoading).isTrue()
+            assertThat(awaitItem().isLoading).isFalse()
         }
+    }
 
     @Test
-    fun `email changed action should update email state`() = runTest {
+    fun emailChangedActionShouldUpdateEmailState() = runTest {
         viewModel.state.test {
             assertThat(awaitItem().email).isEmpty()
 
@@ -64,18 +63,17 @@ class RegisterViewModelTest {
     }
 
     @Test
-    fun `password changed action should update password state and calculate security level`() =
-        runTest {
-            viewModel.state.test {
-                assertThat(awaitItem().password).isEmpty()
+    fun passwordChangedActionShouldUpdatePasswordStateAndCalculateSecurity() = runTest {
+        viewModel.state.test {
+            assertThat(awaitItem().password).isEmpty()
 
-                updatePassword(VALID_PASSWORD)
-                assertThat(awaitItem().password).isEqualTo(VALID_PASSWORD)
-                assertThat(
-                    awaitItem().passwordSecurityLevel,
-                ).isEqualTo(PasswordSecurityLevel.STRONG)
-            }
+            updatePassword(VALID_PASSWORD)
+            assertThat(awaitItem().password).isEqualTo(VALID_PASSWORD)
+            assertThat(
+                awaitItem().passwordSecurityLevel,
+            ).isEqualTo(PasswordSecurityLevel.STRONG)
         }
+    }
 
     private fun createRegisterViewModel(): RegisterViewModel {
         return RegisterViewModel(

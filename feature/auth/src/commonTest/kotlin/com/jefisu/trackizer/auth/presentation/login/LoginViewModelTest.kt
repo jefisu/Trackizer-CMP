@@ -30,7 +30,7 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `login action should toggle loading state from false to true to false`() = runTest {
+    fun loginActionShouldToggleLoadingStateFromFalseToTrueToFalse() = runTest {
         viewModel.state.test {
             assertThat(awaitItem().isLoading).isFalse()
 
@@ -41,19 +41,18 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `reset password action should toggle loading state from false to true to false`() =
-        runTest {
-            viewModel.state.test {
-                assertThat(awaitItem().isLoadingResetPassword).isFalse()
+    fun resetPasswordActionShouldToggleLoadingStateFromFalseToTrueToFalse() = runTest {
+        viewModel.state.test {
+            assertThat(awaitItem().isLoadingResetPassword).isFalse()
 
-                performResetPasswordAction()
-                assertThat(awaitItem().isLoadingResetPassword).isTrue()
-                assertThat(awaitItem().isLoadingResetPassword).isFalse()
-            }
+            performResetPasswordAction()
+            assertThat(awaitItem().isLoadingResetPassword).isTrue()
+            assertThat(awaitItem().isLoadingResetPassword).isFalse()
         }
+    }
 
     @Test
-    fun `email changed action should update email state`() = runTest {
+    fun emailChangedActionShouldUpdateEmailState() = runTest {
         viewModel.state.test {
             assertThat(awaitItem().email).isEmpty()
 
@@ -63,7 +62,7 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `password changed action should update password state`() = runTest {
+    fun passwordChangedActionShouldUpdatePasswordState() = runTest {
         viewModel.state.test {
             assertThat(awaitItem().password).isEmpty()
 

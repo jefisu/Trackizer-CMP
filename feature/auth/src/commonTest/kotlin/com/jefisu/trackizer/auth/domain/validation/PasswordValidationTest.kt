@@ -25,43 +25,43 @@ class PasswordValidationTest {
     }
 
     @Test
-    fun `validate empty password should return too short error`() {
+    fun validateEmptyPasswordShouldReturnTooShortError() {
         val result = validatePassword(EMPTY_PASSWORD)
         assertThat(result.error!!).containsAtLeast(PasswordValidationError.TOO_SHORT)
     }
 
     @Test
-    fun `validate password shorter than 8 characters should return too short error`() {
+    fun validatePasswordShorterThan8CharactersShouldReturnTooShortError() {
         val result = validatePassword(INVALID_PASSWORD_SHORT)
         assertThat(result.error!!).containsAtLeast(PasswordValidationError.TOO_SHORT)
     }
 
     @Test
-    fun `validate password without uppercase letter should return no uppercase error`() {
+    fun validatePasswordWithoutUppercaseLetterShouldReturnNoUppercaseError() {
         val result = validatePassword(INVALID_PASSWORD_NO_UPPERCASE)
         assertThat(result.error!!).containsAtLeast(PasswordValidationError.NO_UPPERCASE_LETTER)
     }
 
     @Test
-    fun `validate password without lowercase letter should return no lowercase error`() {
+    fun validatePasswordWithoutLowercaseLetterShouldReturnNoLowercaseError() {
         val result = validatePassword(INVALID_PASSWORD_NO_LOWERCASE)
         assertThat(result.error!!).containsAtLeast(PasswordValidationError.NO_LOWERCASE_LETTER)
     }
 
     @Test
-    fun `validate password without digit should return no digit error`() {
+    fun validatePasswordWithoutDigitShouldReturnNoDigitError() {
         val result = validatePassword(INVALID_PASSWORD_NO_DIGIT)
         assertThat(result.error!!).containsAtLeast(PasswordValidationError.NO_DIGIT)
     }
 
     @Test
-    fun `validate password without special character should return no special character error`() {
+    fun validatePasswordWithoutSpecialCharacterShouldReturnNoSpecialCharacterError() {
         val result = validatePassword(INVALID_PASSWORD_NO_SPECIAL_CHAR)
         assertThat(result.error!!).containsAtLeast(PasswordValidationError.NO_SPECIAL_CHARACTER)
     }
 
     @Test
-    fun `validate password with all requirements should succeed`() {
+    fun validatePasswordWithAllRequirementsShouldSucceed() {
         val result = validatePassword(VALID_PASSWORD)
         assertThat(result.successfully).isTrue()
         assertThat(result.error).isNull()

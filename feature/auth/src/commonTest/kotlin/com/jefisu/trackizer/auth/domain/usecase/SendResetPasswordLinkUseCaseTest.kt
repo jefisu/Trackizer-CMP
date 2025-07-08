@@ -25,7 +25,7 @@ class SendResetPasswordLinkUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `send reset password link with empty email should return validation error`() = runTest {
+    fun sendResetPasswordLinkWithEmptyEmailShouldReturnValidationError() = runTest {
         val result = executeSendResetPasswordLink(EMPTY_EMAIL)
 
         assertThat(result).isEqualTo(
@@ -34,17 +34,16 @@ class SendResetPasswordLinkUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `send reset password link with invalid email format should return validation error`() =
-        runTest {
-            val result = executeSendResetPasswordLink(INVALID_EMAIL)
+    fun sendResetPasswordLinkWithInvalidEmailFormatShouldReturnValidationError() = runTest {
+        val result = executeSendResetPasswordLink(INVALID_EMAIL)
 
-            assertThat(result).isEqualTo(
-                expectedEmailValidationError(EmailValidationError.INVALID_FORMAT),
-            )
-        }
+        assertThat(result).isEqualTo(
+            expectedEmailValidationError(EmailValidationError.INVALID_FORMAT),
+        )
+    }
 
     @Test
-    fun `send reset password link for existing user should succeed`() = runTest {
+    fun sendResetPasswordLinkForExistingUserShouldSucceed() = runTest {
         givenUserExists(email = VALID_EMAIL, password = VALID_PASSWORD)
 
         val result = executeSendResetPasswordLink(VALID_EMAIL)
@@ -53,12 +52,11 @@ class SendResetPasswordLinkUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `send reset password link for non-existing user should return user not found error`() =
-        runTest {
-            val result = executeSendResetPasswordLink(VALID_EMAIL)
+    fun sendResetPasswordLinkForNonExistingUserShouldReturnUserNotFoundError() = runTest {
+        val result = executeSendResetPasswordLink(VALID_EMAIL)
 
-            assertThat(result).isEqualTo(expectedUserNotFoundError())
-        }
+        assertThat(result).isEqualTo(expectedUserNotFoundError())
+    }
 
     private suspend fun executeSendResetPasswordLink(
         email: String,

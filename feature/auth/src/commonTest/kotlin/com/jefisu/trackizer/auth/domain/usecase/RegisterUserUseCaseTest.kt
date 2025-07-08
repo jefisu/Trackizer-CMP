@@ -31,7 +31,7 @@ class RegisterUserUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `register with empty email should return validation error`() = runTest {
+    fun registerWithEmptyEmailShouldReturnValidationError() = runTest {
         val result = executeRegister(email = EMPTY_EMAIL, password = VALID_PASSWORD)
 
         assertThat(result).isEqualTo(
@@ -40,7 +40,7 @@ class RegisterUserUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `register with invalid email format should return validation error`() = runTest {
+    fun registerWithInvalidEmailFormatShouldReturnValidationError() = runTest {
         val result = executeRegister(email = INVALID_EMAIL, password = VALID_PASSWORD)
 
         assertThat(result).isEqualTo(
@@ -49,7 +49,7 @@ class RegisterUserUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `register with empty password should return validation error`() = runTest {
+    fun registerWithEmptyPasswordShouldReturnValidationError() = runTest {
         val result = executeRegister(email = VALID_EMAIL, password = EMPTY_PASSWORD)
 
         assertThat(result).isEqualTo(
@@ -58,7 +58,7 @@ class RegisterUserUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `register with password without uppercase should return validation error`() = runTest {
+    fun registerWithPasswordWithoutUppercaseShouldReturnValidationError() = runTest {
         val result = executeRegister(email = VALID_EMAIL, password = INVALID_PASSWORD_NO_UPPERCASE)
 
         assertThat(result).isEqualTo(
@@ -67,7 +67,7 @@ class RegisterUserUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `register with password without lowercase should return validation error`() = runTest {
+    fun registerWithPasswordWithoutLowercaseShouldReturnValidationError() = runTest {
         val result = executeRegister(email = VALID_EMAIL, password = INVALID_PASSWORD_NO_LOWERCASE)
 
         assertThat(result).isEqualTo(
@@ -76,7 +76,7 @@ class RegisterUserUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `register with password without digit should return validation error`() = runTest {
+    fun registerWithPasswordWithoutDigitShouldReturnValidationError() = runTest {
         val result = executeRegister(email = VALID_EMAIL, password = INVALID_PASSWORD_NO_DIGIT)
 
         assertThat(result).isEqualTo(
@@ -85,25 +85,24 @@ class RegisterUserUseCaseTest : BaseAuthUseCaseTest() {
     }
 
     @Test
-    fun `register with password without special character should return validation error`() =
-        runTest {
-            val result =
-                executeRegister(email = VALID_EMAIL, password = INVALID_PASSWORD_NO_SPECIAL_CHAR)
+    fun registerWithPasswordWithoutSpecialCharacterShouldReturnValidationError() = runTest {
+        val result =
+            executeRegister(email = VALID_EMAIL, password = INVALID_PASSWORD_NO_SPECIAL_CHAR)
 
-            assertThat(result).isEqualTo(
-                expectedPasswordValidationError(PasswordValidationError.NO_SPECIAL_CHARACTER),
-            )
-        }
+        assertThat(result).isEqualTo(
+            expectedPasswordValidationError(PasswordValidationError.NO_SPECIAL_CHARACTER),
+        )
+    }
 
     @Test
-    fun `register with valid credentials should succeed`() = runTest {
+    fun registerWithValidCredentialsShouldSucceed() = runTest {
         val result = executeRegister(email = VALID_EMAIL, password = VALID_PASSWORD)
 
         assertThat(result).isEqualTo(expectedSuccessResult())
     }
 
     @Test
-    fun `register with existing email should return user already exists error`() = runTest {
+    fun registerWithExistingEmailShouldReturnUserAlreadyExistsError() = runTest {
         givenUserExists(email = VALID_EMAIL, password = VALID_PASSWORD)
 
         val result = executeRegister(email = VALID_EMAIL, password = VALID_PASSWORD)
