@@ -1209,6 +1209,7 @@
 |    +--- com.composables:core:1.31.1 (*)
 |    +--- project :core:util
 |    |    +--- org.jetbrains.compose.ui:ui-tooling-preview:1.8.1 (*)
+|    |    +--- io.insert-koin:koin-android -> 4.1.0 (*)
 |    |    +--- org.jetbrains.kotlin:kotlin-stdlib:2.1.21 (*)
 |    |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1 (*)
 |    |    +--- org.jetbrains.compose.runtime:runtime:1.8.1 (*)
@@ -1222,7 +1223,14 @@
 |    |    +--- org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.9.0 (*)
 |    |    +--- com.adamglin:compose-shadow:2.0.4 (*)
 |    |    +--- br.com.devsrsouza.compose.icons:feather:1.1.1 (*)
-|    |    \--- com.composables:core:1.31.1 (*)
+|    |    +--- com.composables:core:1.31.1 (*)
+|    |    +--- io.insert-koin:koin-bom:4.1.0 (*)
+|    |    +--- io.insert-koin:koin-core -> 4.1.0 (*)
+|    |    +--- io.insert-koin:koin-compose -> 4.1.0 (*)
+|    |    +--- io.insert-koin:koin-compose-viewmodel -> 4.1.0 (*)
+|    |    +--- io.insert-koin:koin-compose-viewmodel-navigation -> 4.1.0 (*)
+|    |    +--- io.insert-koin:koin-annotations-bom:2.1.0 (*)
+|    |    \--- io.insert-koin:koin-annotations -> 2.1.0 (*)
 |    \--- project :core:ui
 |         +--- org.jetbrains.compose.ui:ui-tooling-preview:1.8.1 (*)
 |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.1.21 (*)

@@ -1,52 +1,66 @@
+@file:OptIn(KoinExperimentalAPI::class)
+
 package com.jefisu.trackizer
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
-import com.jefisu.trackizer.auth.di.rememberAuthScope
+import com.jefisu.trackizer.auth.di.AUTH_SCOPE_ID
 import com.jefisu.trackizer.auth.presentation.util.AuthEvent
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
 import com.jefisu.trackizer.core.designsystem.components.FlashMessageDialog
 import com.jefisu.trackizer.core.ui.EventManager
-import com.jefisu.trackizer.core.ui.MessageManager
 import com.jefisu.trackizer.core.ui.ObserveAsEvents
-import com.jefisu.trackizer.domain.UserRepository
+import com.jefisu.trackizer.core.util.closeKoinScope
+import com.jefisu.trackizer.di.AppModule
+import com.jefisu.trackizer.di.nativeModule
 import com.jefisu.trackizer.navigation.Destination
 import com.jefisu.trackizer.navigation.NavGraph
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.compose.koinInject
+import org.koin.compose.KoinMultiplatformApplication
+import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.annotation.KoinExperimentalAPI
+import org.koin.dsl.KoinConfiguration
+import org.koin.ksp.generated.module
 
 @Composable
 @Preview
-fun App() = TrackizerTheme {
+fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
     val navController = rememberNavController()
-    val message by MessageManager.message.collectAsStateWithLifecycle()
-    val userRepository = koinInject<UserRepository>()
-    val authScope = rememberAuthScope()
 
-    FlashMessageDialog(
-        message = message,
-        onDismiss = MessageManager::closeMessage,
-    )
-
-    ObserveAsEvents(EventManager.events) { event ->
-        if (event !is AuthEvent.UserAuthenticated) return@ObserveAsEvents
-        navController.navigate(Destination.AuthenticatedGraph) {
-            popUpTo<Destination.AuthGraph> { inclusive = true }
-        }
-        if (authScope.isNotClosed()) authScope.close()
-    }
-
-    NavGraph(
-        startDestination = when {
-            userRepository.isAuthenticated() -> {
-                authScope.close()
-                Destination.AuthenticatedGraph
-            }
-
-            else -> Destination.AuthGraph
+    KoinMultiplatformApplication(
+        config = KoinConfiguration {
+            modules(AppModule().module, nativeModule)
         },
-        navController = navController,
-    )
+    ) {
+        LaunchedEffect(Unit) {
+            configure?.invoke()
+        }
+
+        val viewModel = koinViewModel<AppViewModel>()
+        val state by viewModel.state.collectAsStateWithLifecycle()
+
+        FlashMessageDialog(
+            message = state.message,
+            onDismiss = viewModel::dismissMessage,
+        )
+
+        ObserveAsEvents(EventManager.events) { event ->
+            if (event !is AuthEvent.UserAuthenticated) return@ObserveAsEvents
+            navController.navigate(Destination.AuthenticatedGraph) {
+                popUpTo<Destination.AuthGraph> { inclusive = true }
+            }
+            closeKoinScope(AUTH_SCOPE_ID)
+        }
+
+        NavGraph(
+            startDestination = when {
+                state.loggedIn -> Destination.AuthenticatedGraph
+                else -> Destination.AuthGraph
+            },
+            navController = navController,
+        )
+    }
 }

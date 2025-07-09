@@ -24,10 +24,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         enableEdgeToEdge()
-        getKoin().declare(facebookUIClient)
         setContent {
             LightSystemBar()
-            App()
+            App(
+                configure = {
+                    provideKoinDependencies()
+                },
+            )
         }
     }
 
@@ -39,6 +42,10 @@ class MainActivity : ComponentActivity() {
     ) {
         super.onActivityResult(requestCode, resultCode, data, caller)
         facebookUIClient.callbackManager.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun provideKoinDependencies() = with(getKoin()) {
+        declare(facebookUIClient)
     }
 }
 
