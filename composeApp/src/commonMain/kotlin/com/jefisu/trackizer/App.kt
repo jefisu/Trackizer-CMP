@@ -16,10 +16,12 @@ import com.jefisu.trackizer.core.ui.ObserveAsEvents
 import com.jefisu.trackizer.core.util.closeKoinScope
 import com.jefisu.trackizer.di.AppModule
 import com.jefisu.trackizer.di.nativeModule
+import com.jefisu.trackizer.domain.UserRepository
 import com.jefisu.trackizer.navigation.Destination
 import com.jefisu.trackizer.navigation.NavGraph
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinMultiplatformApplication
+import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.dsl.KoinConfiguration
@@ -42,6 +44,8 @@ fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
         val viewModel = koinViewModel<AppViewModel>()
         val state by viewModel.state.collectAsStateWithLifecycle()
 
+        val userRepository = koinInject<UserRepository>()
+
         FlashMessageDialog(
             message = state.message,
             onDismiss = viewModel::dismissMessage,
@@ -57,7 +61,7 @@ fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
 
         NavGraph(
             startDestination = when {
-                state.loggedIn -> Destination.AuthenticatedGraph
+                userRepository.isLoggedIn() -> Destination.AuthenticatedGraph
                 else -> Destination.AuthGraph
             },
             navController = navController,

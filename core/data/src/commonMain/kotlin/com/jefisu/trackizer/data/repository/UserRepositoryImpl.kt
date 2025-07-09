@@ -9,7 +9,7 @@ import org.koin.core.annotation.Single
 class UserRepositoryImpl(
     @Provided private val firebaseAuth: FirebaseAuth,
 ) : UserRepository {
-    override fun isAuthenticated(): Boolean {
+    override fun isLoggedIn(): Boolean {
         return firebaseAuth.currentUser != null
     }
 }
