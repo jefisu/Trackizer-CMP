@@ -10,11 +10,17 @@ class CMPFeatureConventionPlugin : Plugin<Project> {
             apply<CMPConventionPlugin>()
             apply<KtlintConventionPlugin>()
             apply<DetektConventionPlugin>()
+            apply<KMPKoinConventionPlugin>()
+            apply<KMPBuildKonfigConventionPlugin>()
         }
 
         dependencies {
+            "commonMainImplementation"(project(":core:platform"))
             "commonMainImplementation"(project(":core:designsystem"))
             "commonMainImplementation"(project(":core:util"))
+            "commonMainImplementation"(project(":core:ui"))
+
+            "commonTestImplementation"(project(":testUtil"))
         }
     }
 }

@@ -47,3 +47,9 @@ val BorderBrush = Brush.sweepGradient(
     0.5f to Purple90.copy(0.15f),
     0.85f to Color.Transparent,
 )
+
+val FacebookBorderGradient = Brush.sweepGradient(
+    0f to Color.White.copy(0.01f),
+    0.55f to Color.White.copy(0.2f),
+    0.95f to Color.White.copy(0.1f),
+)

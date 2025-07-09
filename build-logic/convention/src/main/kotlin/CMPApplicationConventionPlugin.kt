@@ -22,7 +22,11 @@ class CMPApplicationConventionPlugin : Plugin<Project> {
             apply<DetektConventionPlugin>()
             apply<DependencyGuardConventionPlugin>()
             apply<GitHooksConventionPlugin>()
+            apply<KMPKoinConventionPlugin>()
+            apply<KMPBuildKonfigConventionPlugin>()
+            apply<KMPFirebaseConventionPlugin>()
             apply(libs.getPluginId("kotlinxSerialization"))
+            apply(libs.getPluginId("googleServices"))
         }
 
         with(extensions) {
@@ -37,6 +41,8 @@ class CMPApplicationConventionPlugin : Plugin<Project> {
             "commonMainImplementation"(libs.findLibrary("kotlinx-serialization").get())
 
             "androidMainImplementation"(libs.findLibrary("androidx-activity-compose").get())
+
+            "commonTestImplementation"(project(":testUtil"))
         }
     }
 }

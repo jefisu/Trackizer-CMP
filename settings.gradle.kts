@@ -50,8 +50,14 @@ check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
 includeBuild("build-logic")
 
 include(":composeApp")
+include(":testUtil")
 
 include(":core:designsystem")
 include(":core:util")
+include(":core:ui")
+include(":core:domain")
+include(":core:data")
+include(":core:platform")
 
 include(":feature:welcome")
+include(":feature:auth")

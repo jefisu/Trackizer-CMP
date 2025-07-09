@@ -4,7 +4,6 @@ import com.jefisu.trackizer.moduleName
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 class KMPConventionPlugin : Plugin<Project> {
@@ -12,10 +11,6 @@ class KMPConventionPlugin : Plugin<Project> {
         pluginManager.apply(libs.getPluginId("kotlinMultiplatform"))
 
         configureKotlinMultiplatform()
-
-        dependencies {
-            "commonTestImplementation"(libs.findLibrary("kotlin-test").get())
-        }
     }
 }
 
