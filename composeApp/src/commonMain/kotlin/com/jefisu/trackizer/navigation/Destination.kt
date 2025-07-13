@@ -8,7 +8,7 @@ sealed interface Destination {
     data object AuthGraph : Destination
 
     @Serializable
-    data object AuthenticatedGraph : Destination
+    data object LoggedGraph : Destination
 
     @Serializable
     data object WelcomeScreen : Destination

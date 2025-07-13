@@ -59,7 +59,7 @@ fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
 
         ObserveAsEvents(EventManager.events) { event ->
             if (event !is AuthEvent.UserAuthenticated) return@ObserveAsEvents
-            navController.navigate(Destination.AuthenticatedGraph) {
+            navController.navigate(Destination.LoggedGraph) {
                 popUpTo<Destination.AuthGraph> { inclusive = true }
             }
             closeKoinScope(AUTH_SCOPE_ID)
@@ -67,7 +67,7 @@ fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
 
         NavGraph(
             startDestination = when {
-                userRepository.isLoggedIn() -> Destination.AuthenticatedGraph
+                userRepository.isLoggedIn() -> Destination.LoggedGraph
                 else -> Destination.AuthGraph
             },
             navController = navController,
