@@ -19,6 +19,7 @@ class CMPFeatureConventionPlugin : Plugin<Project> {
             "commonMainImplementation"(project(":core:designsystem"))
             "commonMainImplementation"(project(":core:util"))
             "commonMainImplementation"(project(":core:ui"))
+            "commonMainImplementation"(project(":core:domain"))
 
             "commonTestImplementation"(project(":testUtil"))
         }

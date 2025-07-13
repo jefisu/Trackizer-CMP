@@ -39,6 +39,10 @@ class CMPConventionPlugin : Plugin<Project> {
                 "commonMainImplementation"(libs.findLibrary("composeIcons-feather").get())
                 "commonMainImplementation"(libs.findLibrary("compose-unstyled").get())
 
+                "commonMainImplementation"(libs.findLibrary("coil-compose").get())
+                "commonMainImplementation"(libs.findLibrary("coil-test").get())
+                "commonMainImplementation"(libs.findLibrary("coil-network-ktor3").get())
+
                 "debugImplementation"(uiTooling)
 
                 "androidMainImplementation"(preview)

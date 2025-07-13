@@ -7,6 +7,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
+import coil3.compose.setSingletonImageLoaderFactory
 import com.jefisu.trackizer.auth.di.AUTH_SCOPE_ID
 import com.jefisu.trackizer.auth.presentation.util.AuthEvent
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
@@ -19,6 +20,7 @@ import com.jefisu.trackizer.di.nativeModule
 import com.jefisu.trackizer.domain.UserRepository
 import com.jefisu.trackizer.navigation.Destination
 import com.jefisu.trackizer.navigation.NavGraph
+import com.jefisu.trackizer.util.CoilConfig
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinMultiplatformApplication
 import org.koin.compose.koinInject
@@ -31,6 +33,10 @@ import org.koin.ksp.generated.module
 @Preview
 fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
     val navController = rememberNavController()
+
+    setSingletonImageLoaderFactory { context ->
+        CoilConfig.buildImageLoader(context)
+    }
 
     KoinMultiplatformApplication(
         config = KoinConfiguration {

@@ -36,6 +36,7 @@ class KMPLibraryConventionPlugin : Plugin<Project> {
 
         dependencies {
             "commonMainImplementation"(libs.findLibrary("kotlinx-coroutines-core").get())
+            "commonMainImplementation"(libs.findLibrary("kotlinx-datetime").get())
 
             "commonTestImplementation"(libs.findBundle("test-kmp").get())
             "androidTestImplementation"(libs.findBundle("test-android").get())

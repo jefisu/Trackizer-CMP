@@ -4,14 +4,9 @@ package com.jefisu.trackizer.navigation
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -19,13 +14,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.composeunstyled.Text
 import com.jefisu.trackizer.auth.di.rememberAuthScope
 import com.jefisu.trackizer.auth.presentation.login.LoginScreenRoot
 import com.jefisu.trackizer.auth.presentation.register.RegisterScreenRoot
 import com.jefisu.trackizer.auth.presentation.thirdpartyauth.ThirdPartyAuthRoot
 import com.jefisu.trackizer.core.ui.LocalAnimatedContentScope
 import com.jefisu.trackizer.core.ui.LocalSharedTransitionScope
+import com.jefisu.trackizer.home.HomeScreenRoot
 import com.jefisu.trackizer.welcome.WelcomeScreenRoot
 
 @Composable
@@ -130,12 +125,7 @@ private fun NavGraphBuilder.authenticatedGraph() {
         startDestination = Destination.HomeScreen,
     ) {
         animatedScreen<Destination.HomeScreen> {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize(),
-            ) {
-                Text("Home Screen", color = Color.White)
-            }
+            HomeScreenRoot()
         }
     }
 }
