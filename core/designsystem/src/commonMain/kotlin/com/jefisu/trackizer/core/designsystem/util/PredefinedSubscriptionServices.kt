@@ -11,7 +11,7 @@ import trackizer.core.designsystem.generated.resources.ic_netflix
 import trackizer.core.designsystem.generated.resources.ic_spotify
 import trackizer.core.designsystem.generated.resources.ic_youtube_premium
 
-enum class PredefinedSubscriptionServicesType(
+enum class PredefinedSubscriptionServices(
     val displayName: String,
     val imageRes: DrawableResource,
     val color: Color,

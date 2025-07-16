@@ -1,4 +1,4 @@
-package com.jefisu.trackizer.home.components
+package com.jefisu.trackizer.home.presentation.components
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
@@ -195,10 +196,13 @@ private fun SubscriptionItem(
         if (upcomingBill) {
             DateIcon(subscription.firstPayment.date)
         } else {
-            TrackizerSubscriptionIcon(subscription.serviceType.imageData)
+            TrackizerSubscriptionIcon(
+                imageData = subscription.service.imageData,
+                containerColor = subscription.service.color?.let(::Color),
+            )
         }
         Text(
-            text = subscription.serviceType.name,
+            text = subscription.service.name,
             style = TrackizerTheme.typography.headline2,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,

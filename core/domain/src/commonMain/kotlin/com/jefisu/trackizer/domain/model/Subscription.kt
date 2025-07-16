@@ -3,7 +3,7 @@ package com.jefisu.trackizer.domain.model
 import kotlinx.datetime.LocalDateTime
 
 data class Subscription(
-    val serviceType: SubscriptionServiceType,
+    val service: SubscriptionService,
     val description: String,
     val price: Float,
     val firstPayment: LocalDateTime,

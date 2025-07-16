@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.jefisu.trackizer.home
+package com.jefisu.trackizer.home.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,9 +10,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
 import com.jefisu.trackizer.core.designsystem.components.AnimatedTabs
 import com.jefisu.trackizer.core.designsystem.components.Tab
@@ -21,12 +23,13 @@ import com.jefisu.trackizer.core.designsystem.components.TrackizerTopBarDefaults
 import com.jefisu.trackizer.core.designsystem.util.previewSubscriptions
 import com.jefisu.trackizer.core.ui.filterUpcomingBills
 import com.jefisu.trackizer.domain.model.Subscription
-import com.jefisu.trackizer.home.components.SubscriptionDashboard
-import com.jefisu.trackizer.home.components.SubscriptionList
+import com.jefisu.trackizer.home.presentation.components.SubscriptionDashboard
+import com.jefisu.trackizer.home.presentation.components.SubscriptionList
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameterProvider
+import org.koin.compose.viewmodel.koinViewModel
 import trackizer.core.designsystem.generated.resources.Res as DesignSystemRes
 import trackizer.core.designsystem.generated.resources.subscriptions
 import trackizer.feature.home.generated.resources.Res
@@ -35,9 +38,11 @@ import trackizer.feature.home.generated.resources.you_don_t_have_any
 import trackizer.feature.home.generated.resources.your_subscriptions_tab
 
 @Composable
-fun HomeScreenRoot() {
+fun HomeScreenRoot(viewModel: HomeViewModel = koinViewModel()) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
     HomeScreen(
-        state = HomeState(),
+        state = state,
     )
 }
 

@@ -17,7 +17,7 @@ import com.jefisu.trackizer.core.ui.ObserveAsEvents
 import com.jefisu.trackizer.core.util.closeKoinScope
 import com.jefisu.trackizer.di.AppModule
 import com.jefisu.trackizer.di.nativeModule
-import com.jefisu.trackizer.domain.UserRepository
+import com.jefisu.trackizer.domain.repository.UserRepository
 import com.jefisu.trackizer.navigation.Destination
 import com.jefisu.trackizer.navigation.NavGraph
 import com.jefisu.trackizer.util.CoilConfig

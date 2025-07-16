@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.SubcomposeAsyncImage
 import com.jefisu.trackizer.core.designsystem.Primary100
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
-import com.jefisu.trackizer.core.designsystem.util.PredefinedSubscriptionServicesType
+import com.jefisu.trackizer.core.designsystem.util.PredefinedSubscriptionServices
 import com.jefisu.trackizer.core.util.ImageData
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -28,15 +28,15 @@ fun TrackizerSubscriptionIcon(
     iconSize: Dp = TrackizerTheme.size.iconDefault,
     containerSize: Dp = 40.dp,
     cornerSize: Dp = 12.dp,
-    containerColor: Color = Primary100.copy(0.1f),
+    containerColor: Color? = null,
 ) {
-    val predefinedColor = PredefinedSubscriptionServicesType
+    val predefinedColor = PredefinedSubscriptionServices
         .entries
         .firstOrNull { it.imageRes == (imageData as? ImageData.Device)?.resource }
         ?.color
 
     TrackizerIconContainer(
-        containerColor = predefinedColor ?: containerColor,
+        containerColor = predefinedColor ?: containerColor ?: Primary100.copy(0.1f),
         containerSize = containerSize,
         cornerSize = cornerSize,
         modifier = modifier,
@@ -85,7 +85,7 @@ private fun SubscriptionIconPreview(
 }
 
 private class SubscriptionIconPreviewParameter : PreviewParameterProvider<ImageData> {
-    val subscriptionServicesType = PredefinedSubscriptionServicesType.entries[0]
+    val subscriptionServicesType = PredefinedSubscriptionServices.entries[0]
     override val values = sequenceOf(
         ImageData.Device(subscriptionServicesType.imageRes),
         ImageData.Server(""),

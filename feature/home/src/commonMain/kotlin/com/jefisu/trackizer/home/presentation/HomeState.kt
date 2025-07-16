@@ -1,4 +1,4 @@
-package com.jefisu.trackizer.home
+package com.jefisu.trackizer.home.presentation
 
 import com.jefisu.trackizer.domain.model.Subscription
 

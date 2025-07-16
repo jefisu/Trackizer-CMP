@@ -8,4 +8,4 @@ class AuthScope
 const val AUTH_SCOPE_ID = "AuthScope"
 
 @Composable
-fun rememberAuthScope() = getKoin().getOrCreateScope<AuthScope>(scopeId = "AuthScope")
+fun rememberAuthScope() = getKoin().getOrCreateScope<AuthScope>(scopeId = AUTH_SCOPE_ID)

@@ -72,6 +72,7 @@ credentials-play-services-auth = { module = "androidx.credentials:credentials-pl
 identity-googleId = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "identityGoogleId" }
 firebase-common = { module = "dev.gitlive:firebase-common", version.ref = "firebase-kotlin-sdk" }
 firebase-auth = { module = "dev.gitlive:firebase-auth", version.ref = "firebase-kotlin-sdk" }
+firebase-firestore = { module = "dev.gitlive:firebase-firestore", version.ref = "firebase-kotlin-sdk" }
 firebase-bom-android = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 facebook-login = { module = "com.facebook.android:facebook-login", version.ref = "facebook" }
 

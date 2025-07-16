@@ -1,4 +1,4 @@
-package com.jefisu.trackizer.home.components
+package com.jefisu.trackizer.home.presentation.components
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState

@@ -1,4 +1,4 @@
-package com.jefisu.trackizer.home.components
+package com.jefisu.trackizer.home.presentation.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
