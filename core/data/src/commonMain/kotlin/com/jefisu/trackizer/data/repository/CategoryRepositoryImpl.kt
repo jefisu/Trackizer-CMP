@@ -39,4 +39,8 @@ class CategoryRepositoryImpl(
                 categoryRemoteData.toCategory(categoryType.toCategoryType())
             }
         }
+
+    override suspend fun addCategory(category: Category) {
+        TODO("Not yet implemented")
+    }
 }

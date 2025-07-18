@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface CategoryRepository {
     val categories: Flow<List<Category>>
+    suspend fun addCategory(category: Category)
 }

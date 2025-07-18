@@ -3,6 +3,8 @@
 package com.jefisu.trackizer.core.designsystem.util
 
 import com.jefisu.trackizer.core.util.ImageData
+import com.jefisu.trackizer.domain.model.Category
+import com.jefisu.trackizer.domain.model.CategoryType
 import com.jefisu.trackizer.domain.model.Subscription
 import com.jefisu.trackizer.domain.model.SubscriptionService
 import kotlin.time.ExperimentalTime
@@ -34,3 +36,28 @@ val previewSubscriptions = PredefinedSubscriptionServices.entries.mapIndexed { i
         reminder = index % 2 == 0,
     )
 }
+
+val previewCategories = listOf(
+    Category(
+        name = "Concert",
+        budget = 50f,
+        type = CategoryType(
+            name = "Entertainment",
+            image = ImageData.Server("example.com"),
+            color = 0xFF000000,
+        ),
+        id = "",
+        usedBudget = 10f,
+    ),
+    Category(
+        name = "Japanese food",
+        budget = 100f,
+        type = CategoryType(
+            name = "Food",
+            image = ImageData.Server("example.com"),
+            color = 0xFFFF0000,
+        ),
+        id = "",
+        usedBudget = 30f,
+    ),
+)

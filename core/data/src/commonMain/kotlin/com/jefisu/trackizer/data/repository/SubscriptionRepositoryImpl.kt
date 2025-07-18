@@ -44,4 +44,8 @@ class SubscriptionRepositoryImpl(
                 )
             }
         }
+
+    override suspend fun addSubscription(subscription: Subscription) {
+        TODO("Not yet implemented")
+    }
 }
