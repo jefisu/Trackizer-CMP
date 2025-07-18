@@ -1,6 +1,6 @@
 package com.jefisu.trackizer.data.repository
 
-import com.jefisu.trackizer.domain.UserRepository
+import com.jefisu.trackizer.domain.repository.UserRepository
 import dev.gitlive.firebase.auth.FirebaseAuth
 import org.koin.core.annotation.Provided
 import org.koin.core.annotation.Single

@@ -1,4 +1,4 @@
-package com.jefisu.trackizer.domain
+package com.jefisu.trackizer.domain.repository
 
 interface UserRepository {
     fun isLoggedIn(): Boolean

@@ -7,6 +7,11 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core.util)
             implementation(projects.core.ui)
+            implementation(projects.core.domain)
         }
     }
+}
+
+compose.resources {
+    publicResClass = true
 }

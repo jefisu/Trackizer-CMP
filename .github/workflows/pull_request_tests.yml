@@ -27,6 +27,9 @@ jobs:
       run: |
         echo '${{ secrets.GOOGLE_SERVICES }}' > ./composeApp/google-services.json
         echo '${{ secrets.LOCAL_PROPERTIES }}' > ./local.properties
+        
+    - name: Remove build cache directory
+      run: rm -rf ./build-cache
 
     - name: Run tests
-      run: ./gradlew desktopTest
+      run: ./gradlew cleanTestDebugUnitTest testDebugUnitTest

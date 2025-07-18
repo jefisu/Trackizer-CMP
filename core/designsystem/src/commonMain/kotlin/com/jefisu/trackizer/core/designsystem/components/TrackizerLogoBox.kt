@@ -16,6 +16,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
 import com.jefisu.trackizer.core.ui.SharedTransitionKeys
@@ -66,7 +68,11 @@ private fun TrackizerLogoBoxPreview() {
 object TrackizerLogoDefaults {
 
     @Composable
-    fun Logo(modifier: Modifier = Modifier) {
+    fun Logo(
+        modifier: Modifier = Modifier,
+        size: Dp = TrackizerTheme.size.appLogoSmall,
+        textStyle: TextStyle = TrackizerTheme.typography.headline5,
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = modifier,
@@ -74,12 +80,12 @@ object TrackizerLogoDefaults {
             Image(
                 painter = painterResource(Res.drawable.app_logo_no_background),
                 contentDescription = null,
-                modifier = Modifier.size(TrackizerTheme.size.appLogoSmall),
+                modifier = Modifier.size(size),
             )
             Spacer(modifier = Modifier.width(TrackizerTheme.spacing.extraSmall))
             Text(
                 text = stringResource(Res.string.app_name).uppercase(),
-                style = TrackizerTheme.typography.headline5,
+                style = textStyle,
             )
         }
     }

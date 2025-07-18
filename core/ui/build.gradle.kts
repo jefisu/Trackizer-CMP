@@ -10,6 +10,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core.util)
+            implementation(projects.core.domain)
         }
     }
 }

@@ -16,6 +16,7 @@ kotlin {
 
             implementation(projects.feature.welcome)
             implementation(projects.feature.auth)
+            implementation(projects.feature.home)
         }
         androidMain.dependencies {
             implementation(libs.androidx.core.splashscreen)

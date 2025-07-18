@@ -6,4 +6,5 @@ plugins {
 
 dependencies {
     commonMainImplementation(projects.core.domain)
+    commonMainImplementation(projects.core.util)
 }

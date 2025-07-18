@@ -42,6 +42,9 @@ kotlin {
         pod("FirebaseAuth") {
             extraOpts += listOf("-compiler-option", "-fmodules")
         }
+        pod("FirebaseFirestore") {
+            extraOpts += listOf("-compiler-option", "-fmodules")
+        }
     }
 }
 
