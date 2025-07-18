@@ -33,6 +33,7 @@ fun <T : RemoteData> RemoteDataChange<T>.onRemoved(
     return this
 }
 
+@Suppress("REDUNDANT_ELSE_IN_WHEN")
 fun <T : RemoteData> DocumentChange.toRemoteDataChange(clazz: KClass<T>): RemoteDataChange<T> {
     val document = this.document.data(clazz.serializer())
     return when (this.type) {
