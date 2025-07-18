@@ -1,8 +1,8 @@
 package com.jefisu.trackizer.core.ui
 
 import androidx.compose.runtime.compositionLocalOf
-import com.jefisu.trackizer.domain.model.Currency
-import com.jefisu.trackizer.domain.model.Settings
+import com.jefisu.trackizer.core.domain.model.Currency
+import com.jefisu.trackizer.core.domain.model.Settings
 
 val LocalSettings = compositionLocalOf { previewSettings }
 

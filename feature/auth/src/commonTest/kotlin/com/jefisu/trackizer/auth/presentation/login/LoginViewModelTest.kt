@@ -7,15 +7,17 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isFalse
 import assertk.assertions.isTrue
 import com.jefisu.trackizer.auth.data.FakeAuthRepository
-import com.jefisu.trackizer.auth.domain.usecase.LoginUserUseCase
-import com.jefisu.trackizer.auth.domain.usecase.SendResetPasswordLinkUseCase
-import com.jefisu.trackizer.auth.domain.validation.EmailValidator
+import com.jefisu.trackizer.feature.auth.domain.usecase.LoginUserUseCase
+import com.jefisu.trackizer.feature.auth.domain.usecase.SendResetPasswordLinkUseCase
+import com.jefisu.trackizer.feature.auth.domain.validation.EmailValidator
+import com.jefisu.trackizer.feature.auth.presentation.login.LoginAction
+import com.jefisu.trackizer.feature.auth.presentation.login.LoginViewModel
 import com.jefisu.trackizer.testutil.VALID_EMAIL
 import com.jefisu.trackizer.testutil.VALID_PASSWORD
-import kotlin.test.BeforeTest
-import kotlin.test.Test
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class LoginViewModelTest {

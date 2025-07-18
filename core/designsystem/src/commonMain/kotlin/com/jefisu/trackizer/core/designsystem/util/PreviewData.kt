@@ -2,11 +2,11 @@
 
 package com.jefisu.trackizer.core.designsystem.util
 
+import com.jefisu.trackizer.core.domain.model.Category
+import com.jefisu.trackizer.core.domain.model.CategoryType
+import com.jefisu.trackizer.core.domain.model.Subscription
+import com.jefisu.trackizer.core.domain.model.SubscriptionService
 import com.jefisu.trackizer.core.util.ImageData
-import com.jefisu.trackizer.domain.model.Category
-import com.jefisu.trackizer.domain.model.CategoryType
-import com.jefisu.trackizer.domain.model.Subscription
-import com.jefisu.trackizer.domain.model.SubscriptionService
 import kotlin.time.ExperimentalTime
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDateTime

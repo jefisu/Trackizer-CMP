@@ -1,8 +1,8 @@
 package com.jefisu.trackizer.di
 
-import com.jefisu.trackizer.auth.di.AuthScope
 import com.jefisu.trackizer.core.platform.auth.AuthProvider
 import com.jefisu.trackizer.core.platform.auth.IOSGoogleAuthProvider
+import com.jefisu.trackizer.feature.auth.di.AuthScope
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.scopedOf
 import org.koin.dsl.bind

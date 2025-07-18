@@ -1,7 +1,7 @@
 package com.jefisu.trackizer.testutil.repository
 
-import com.jefisu.trackizer.domain.model.Category
-import com.jefisu.trackizer.domain.repository.CategoryRepository
+import com.jefisu.trackizer.core.domain.model.Category
+import com.jefisu.trackizer.core.domain.repository.CategoryRepository
 import kotlin.collections.plus
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -1,7 +1,7 @@
 package com.jefisu.trackizer.core.ui
 
+import com.jefisu.trackizer.core.domain.model.Subscription
 import com.jefisu.trackizer.core.util.nowUtc
-import com.jefisu.trackizer.domain.model.Subscription
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime

@@ -3,17 +3,17 @@ package com.jefisu.trackizer.navigation.graph
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
-import com.jefisu.trackizer.auth.di.rememberAuthScope
-import com.jefisu.trackizer.auth.presentation.login.LoginScreenRoot
-import com.jefisu.trackizer.auth.presentation.register.RegisterScreenRoot
-import com.jefisu.trackizer.auth.presentation.thirdpartyauth.ThirdPartyAuthRoot
+import com.jefisu.trackizer.feature.auth.di.rememberAuthScope
+import com.jefisu.trackizer.feature.auth.presentation.login.LoginScreenRoot
+import com.jefisu.trackizer.feature.auth.presentation.register.RegisterScreenRoot
+import com.jefisu.trackizer.feature.auth.presentation.thirdpartyauth.ThirdPartyAuthRoot
+import com.jefisu.trackizer.feature.welcome.WelcomeScreenRoot
 import com.jefisu.trackizer.navigation.AnimationTarget
 import com.jefisu.trackizer.navigation.AnimationType
 import com.jefisu.trackizer.navigation.Destination
 import com.jefisu.trackizer.navigation.animatedScreen
 import com.jefisu.trackizer.navigation.navigateSingleTopTo
 import com.jefisu.trackizer.navigation.sharedViewModel
-import com.jefisu.trackizer.welcome.WelcomeScreenRoot
 
 fun NavGraphBuilder.authGraph(navController: NavController) {
     fun navigate(destination: Destination) {

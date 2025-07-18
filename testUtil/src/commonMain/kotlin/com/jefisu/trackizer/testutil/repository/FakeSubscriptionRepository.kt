@@ -1,7 +1,7 @@
 package com.jefisu.trackizer.testutil.repository
 
-import com.jefisu.trackizer.domain.model.Subscription
-import com.jefisu.trackizer.domain.repository.SubscriptionRepository
+import com.jefisu.trackizer.core.domain.model.Subscription
+import com.jefisu.trackizer.core.domain.repository.SubscriptionRepository
 import kotlin.collections.plus
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -2,10 +2,11 @@ package com.jefisu.trackizer.auth.domain.usecase
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import com.jefisu.trackizer.auth.domain.AuthMessage
-import com.jefisu.trackizer.auth.domain.validation.EmailValidationError
-import com.jefisu.trackizer.auth.domain.validation.PasswordValidationError
 import com.jefisu.trackizer.core.util.Result
+import com.jefisu.trackizer.feature.auth.domain.AuthMessage
+import com.jefisu.trackizer.feature.auth.domain.usecase.RegisterUserUseCase
+import com.jefisu.trackizer.feature.auth.domain.validation.EmailValidationError
+import com.jefisu.trackizer.feature.auth.domain.validation.PasswordValidationError
 import com.jefisu.trackizer.testutil.EMPTY_EMAIL
 import com.jefisu.trackizer.testutil.EMPTY_PASSWORD
 import com.jefisu.trackizer.testutil.INVALID_EMAIL

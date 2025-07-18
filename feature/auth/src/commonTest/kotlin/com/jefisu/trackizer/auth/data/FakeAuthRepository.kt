@@ -1,10 +1,10 @@
 package com.jefisu.trackizer.auth.data
 
-import com.jefisu.trackizer.auth.domain.AuthMessage
-import com.jefisu.trackizer.auth.domain.AuthRepository
-import com.jefisu.trackizer.auth.domain.EmptyAuthResult
 import com.jefisu.trackizer.core.platform.auth.AuthProviderType
 import com.jefisu.trackizer.core.util.Result
+import com.jefisu.trackizer.feature.auth.domain.AuthMessage
+import com.jefisu.trackizer.feature.auth.domain.AuthRepository
+import com.jefisu.trackizer.feature.auth.domain.EmptyAuthResult
 
 class FakeAuthRepository : AuthRepository {
 
