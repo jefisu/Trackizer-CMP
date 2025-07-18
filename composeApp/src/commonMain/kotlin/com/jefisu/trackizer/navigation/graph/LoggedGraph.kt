@@ -2,7 +2,7 @@ package com.jefisu.trackizer.navigation.graph
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
-import com.jefisu.trackizer.home.presentation.HomeScreenRoot
+import com.jefisu.trackizer.feature.home.presentation.HomeScreenRoot
 import com.jefisu.trackizer.navigation.AnimationTarget
 import com.jefisu.trackizer.navigation.Destination
 import com.jefisu.trackizer.navigation.animatedScreen

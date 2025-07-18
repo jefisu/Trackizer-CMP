@@ -5,6 +5,8 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import com.jefisu.trackizer.core.util.ValidationResult
+import com.jefisu.trackizer.feature.auth.domain.validation.EmailValidationError
+import com.jefisu.trackizer.feature.auth.domain.validation.EmailValidator
 import com.jefisu.trackizer.testutil.EMPTY_EMAIL
 import com.jefisu.trackizer.testutil.INVALID_EMAIL
 import com.jefisu.trackizer.testutil.VALID_EMAIL

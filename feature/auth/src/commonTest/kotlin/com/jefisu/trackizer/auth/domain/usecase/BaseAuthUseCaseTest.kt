@@ -1,12 +1,12 @@
 package com.jefisu.trackizer.auth.domain.usecase
 
 import com.jefisu.trackizer.auth.data.FakeAuthRepository
-import com.jefisu.trackizer.auth.domain.AuthMessage
-import com.jefisu.trackizer.auth.domain.validation.EmailValidationError
-import com.jefisu.trackizer.auth.domain.validation.EmailValidator
-import com.jefisu.trackizer.auth.domain.validation.PasswordValidationError
-import com.jefisu.trackizer.auth.domain.validation.PasswordValidator
 import com.jefisu.trackizer.core.util.Result
+import com.jefisu.trackizer.feature.auth.domain.AuthMessage
+import com.jefisu.trackizer.feature.auth.domain.validation.EmailValidationError
+import com.jefisu.trackizer.feature.auth.domain.validation.EmailValidator
+import com.jefisu.trackizer.feature.auth.domain.validation.PasswordValidationError
+import com.jefisu.trackizer.feature.auth.domain.validation.PasswordValidator
 import kotlin.test.BeforeTest
 
 /**

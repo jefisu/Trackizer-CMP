@@ -6,6 +6,8 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
 import com.jefisu.trackizer.auth.data.FakeAuthRepository
 import com.jefisu.trackizer.core.platform.auth.AuthProviderType
+import com.jefisu.trackizer.feature.auth.presentation.thirdpartyauth.ThirdPartyAuthAction
+import com.jefisu.trackizer.feature.auth.presentation.thirdpartyauth.ThirdPartyAuthViewModel
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlinx.coroutines.ExperimentalCoroutinesApi
