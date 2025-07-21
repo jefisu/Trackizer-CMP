@@ -1,6 +1,5 @@
 package com.jefisu.trackizer.navigation.graph
 
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
 import com.jefisu.trackizer.feature.auth.di.rememberAuthScope
@@ -11,48 +10,49 @@ import com.jefisu.trackizer.feature.welcome.WelcomeScreenRoot
 import com.jefisu.trackizer.navigation.AnimationTarget
 import com.jefisu.trackizer.navigation.AnimationType
 import com.jefisu.trackizer.navigation.Destination
+import com.jefisu.trackizer.navigation.LocalNavController
 import com.jefisu.trackizer.navigation.animatedScreen
 import com.jefisu.trackizer.navigation.navigateSingleTopTo
 import com.jefisu.trackizer.navigation.sharedViewModel
 
-fun NavGraphBuilder.authGraph(navController: NavController) {
-    fun navigate(destination: Destination) {
-        navController.navigateSingleTopTo<Destination.WelcomeScreen>(destination)
-    }
-
+fun NavGraphBuilder.authGraph() {
     navigation<Destination.AuthGraph>(
         startDestination = Destination.WelcomeScreen,
     ) {
         animatedScreen<Destination.WelcomeScreen> {
+            val navController = LocalNavController.current
             WelcomeScreenRoot(
                 onNavigateToSignInScreen = {
-                    navigate(Destination.LoginScreen)
+                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(Destination.LoginScreen)
                 },
                 onNavigateToSignUpScreen = {
-                    navigate(Destination.ThirdPartyAuthScreen)
+                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(Destination.ThirdPartyAuthScreen)
                 },
             )
         }
         animatedScreen<Destination.ThirdPartyAuthScreen> {
+            val navController = LocalNavController.current
             ThirdPartyAuthRoot(
                 onNavigateToRegisterScreen = {
-                    navigate(Destination.RegisterScreen)
+                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(Destination.RegisterScreen)
                 },
             )
         }
         animatedScreen<Destination.LoginScreen> {
+            val navController = LocalNavController.current
             LoginScreenRoot(
-                viewModel = sharedViewModel(navController, rememberAuthScope()),
+                viewModel = sharedViewModel(rememberAuthScope()),
                 onNavigateToRegisterScreen = {
-                    navigate(Destination.ThirdPartyAuthScreen)
+                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(Destination.ThirdPartyAuthScreen)
                 },
             )
         }
         animatedScreen<Destination.RegisterScreen> {
+            val navController = LocalNavController.current
             RegisterScreenRoot(
-                viewModel = sharedViewModel(navController, rememberAuthScope()),
+                viewModel = sharedViewModel(rememberAuthScope()),
                 onNavigateToLoginScreen = {
-                    navigate(Destination.LoginScreen)
+                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(Destination.LoginScreen)
                 },
             )
         }

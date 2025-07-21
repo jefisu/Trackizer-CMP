@@ -38,11 +38,17 @@ import trackizer.feature.home.generated.resources.you_don_t_have_any
 import trackizer.feature.home.generated.resources.your_subscriptions_tab
 
 @Composable
-fun HomeScreenRoot(viewModel: HomeViewModel = koinViewModel()) {
+fun HomeScreenRoot(
+    onNavigateToSettings: () -> Unit,
+    onNavigateToSeeBudget: () -> Unit,
+    viewModel: HomeViewModel = koinViewModel(),
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     HomeScreen(
         state = state,
+        onSettingsClick = onNavigateToSettings,
+        onSeeBudgetClick = onNavigateToSeeBudget,
     )
 }
 

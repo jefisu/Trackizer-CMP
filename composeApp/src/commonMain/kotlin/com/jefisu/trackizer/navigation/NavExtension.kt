@@ -21,9 +21,9 @@ fun NavBackStackEntry.isCurrentDestination(destination: Destination) = this.dest
 
 @Composable
 inline fun <reified T : ViewModel> NavBackStackEntry.sharedViewModel(
-    navController: NavController,
     scope: Scope = currentKoinScope(),
 ): T {
+    val navController = LocalNavController.current
     val navGraphRoute = destination.parent?.route ?: return viewModel()
     val parentEntry = remember(this) {
         navController.getBackStackEntry(navGraphRoute)

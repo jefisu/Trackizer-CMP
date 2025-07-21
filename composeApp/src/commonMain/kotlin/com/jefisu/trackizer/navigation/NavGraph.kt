@@ -32,7 +32,10 @@ fun NavGraph(startDestination: Destination, navController: NavHostController) {
         blockInteractionMillis = 1000,
     ) {
         SharedTransitionLayout {
-            CompositionLocalProvider(LocalSharedTransitionScope provides this) {
+            CompositionLocalProvider(
+                LocalSharedTransitionScope provides this,
+                LocalNavController provides navController,
+            ) {
                 NavHost(
                     navController = navController,
                     startDestination = startDestination,
@@ -45,7 +48,7 @@ fun NavGraph(startDestination: Destination, navController: NavHostController) {
                         navAnimation.exitTransition(scope = this, isPopAnimation = true)
                     },
                 ) {
-                    authGraph(navController)
+                    authGraph()
                     loggedGraph()
                 }
             }
