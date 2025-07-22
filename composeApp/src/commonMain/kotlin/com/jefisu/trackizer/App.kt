@@ -2,14 +2,21 @@
 
 package com.jefisu.trackizer
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import coil3.compose.setSingletonImageLoaderFactory
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
+import com.jefisu.trackizer.core.designsystem.components.BottomNavItem
 import com.jefisu.trackizer.core.designsystem.components.FlashMessageDialog
+import com.jefisu.trackizer.core.designsystem.components.TrackizerBottomNavBar
 import com.jefisu.trackizer.core.domain.repository.UserRepository
 import com.jefisu.trackizer.core.ui.EventManager
 import com.jefisu.trackizer.core.ui.ObserveAsEvents
@@ -20,6 +27,8 @@ import com.jefisu.trackizer.feature.auth.di.AUTH_SCOPE_ID
 import com.jefisu.trackizer.feature.auth.presentation.util.AuthEvent
 import com.jefisu.trackizer.navigation.Destination
 import com.jefisu.trackizer.navigation.NavGraph
+import com.jefisu.trackizer.navigation.isCurrentDestination
+import com.jefisu.trackizer.navigation.navigateSingleTopTo
 import com.jefisu.trackizer.util.CoilConfig
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinMultiplatformApplication
@@ -28,6 +37,7 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.dsl.KoinConfiguration
 import org.koin.ksp.generated.module
+import trackizer.composeapp.generated.resources.*
 
 @Composable
 @Preview
@@ -51,6 +61,7 @@ fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
         val state by viewModel.state.collectAsStateWithLifecycle()
 
         val userRepository = koinInject<UserRepository>()
+        val isUserLoggedIn = remember { userRepository.isLoggedIn() }
 
         FlashMessageDialog(
             message = state.message,
@@ -65,12 +76,77 @@ fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
             closeKoinScope(AUTH_SCOPE_ID)
         }
 
-        NavGraph(
-            startDestination = when {
-                userRepository.isLoggedIn() -> Destination.LoggedGraph
-                else -> Destination.AuthGraph
+        Scaffold(
+            containerColor = Color.Transparent,
+            bottomBar = {
+                AppBottomNav(
+                    navController = navController,
+                    isUserLoggedIn = isUserLoggedIn,
+                )
             },
-            navController = navController,
+        ) {
+            NavGraph(
+                startDestination = when {
+                    isUserLoggedIn -> Destination.LoggedGraph
+                    else -> Destination.AuthGraph
+                },
+                navController = navController,
+            )
+        }
+    }
+}
+
+@Composable
+fun AppBottomNav(
+    isUserLoggedIn: Boolean,
+    navController: NavController,
+) {
+    val navItems = remember {
+        listOf(
+            BottomNavItem(
+                icon = Res.drawable.ic_home,
+                onClick = {
+                    navController.navigateSingleTopTo<Destination.HomeScreen>(Destination.HomeScreen)
+                },
+            ),
+            BottomNavItem(
+                icon = Res.drawable.ic_budgets,
+                onClick = {
+                    navController.navigateSingleTopTo<Destination.HomeScreen>(Destination.SpendingBudgetsScreen)
+                },
+            ),
+            BottomNavItem(
+                icon = Res.drawable.ic_rounded_add,
+                onClick = {
+                    navController.navigateSingleTopTo<Destination.HomeScreen>(Destination.AddSubscriptionScreen)
+                },
+            ),
+            BottomNavItem(
+                icon = Res.drawable.ic_calendar,
+                onClick = {
+                    navController.navigateSingleTopTo<Destination.HomeScreen>(Destination.CalendarScreen)
+                },
+            ),
+            BottomNavItem(
+                icon = Res.drawable.ic_credit_cards,
+                onClick = {
+                    navController.navigateSingleTopTo<Destination.HomeScreen>(Destination.CreditCardsScreen)
+                },
+            ),
         )
+    }
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val isAddSubscriptionScreenVisible by remember {
+        derivedStateOf {
+            navBackStackEntry?.isCurrentDestination(Destination.AddSubscriptionScreen) == true
+        }
+    }
+
+    AnimatedVisibility(
+        visible = isUserLoggedIn && !isAddSubscriptionScreenVisible,
+        enter = fadeIn(),
+        exit = fadeOut(),
+    ) {
+        TrackizerBottomNavBar(navItems = navItems)
     }
 }

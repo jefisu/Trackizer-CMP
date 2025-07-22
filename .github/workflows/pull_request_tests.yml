@@ -32,4 +32,6 @@ jobs:
       run: rm -rf ./build-cache
 
     - name: Run tests
-      run: ./gradlew cleanTestDebugUnitTest testDebugUnitTest
+      run: ./gradlew cleanTestDebugUnitTest testDebugUnitTest --no-build-cache --rerun-tasks
+      env:
+        GRADLE_OPTS: "-Dorg.gradle.caching=false"

@@ -24,4 +24,16 @@ sealed interface Destination {
 
     @Serializable
     data object HomeScreen : Destination
+
+    @Serializable
+    data object SpendingBudgetsScreen : Destination
+
+    @Serializable
+    data object AddSubscriptionScreen: Destination
+
+    @Serializable
+    data object CalendarScreen: Destination
+
+    @Serializable
+    data object CreditCardsScreen: Destination
 }
