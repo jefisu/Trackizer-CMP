@@ -7,7 +7,13 @@ import assertk.assertions.isTrue
 import com.jefisu.trackizer.core.util.ValidationResult
 import com.jefisu.trackizer.feature.auth.domain.validation.PasswordValidationError
 import com.jefisu.trackizer.feature.auth.domain.validation.PasswordValidator
-import com.jefisu.trackizer.testutil.*
+import com.jefisu.trackizer.testutil.EMPTY_PASSWORD
+import com.jefisu.trackizer.testutil.INVALID_PASSWORD_NO_DIGIT
+import com.jefisu.trackizer.testutil.INVALID_PASSWORD_NO_LOWERCASE
+import com.jefisu.trackizer.testutil.INVALID_PASSWORD_NO_SPECIAL_CHAR
+import com.jefisu.trackizer.testutil.INVALID_PASSWORD_NO_UPPERCASE
+import com.jefisu.trackizer.testutil.INVALID_PASSWORD_SHORT
+import com.jefisu.trackizer.testutil.VALID_PASSWORD
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 

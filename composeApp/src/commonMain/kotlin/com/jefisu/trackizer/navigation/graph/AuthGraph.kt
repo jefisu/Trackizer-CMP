@@ -23,10 +23,14 @@ fun NavGraphBuilder.authGraph() {
             val navController = LocalNavController.current
             WelcomeScreenRoot(
                 onNavigateToSignInScreen = {
-                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(Destination.LoginScreen)
+                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(
+                        Destination.LoginScreen,
+                    )
                 },
                 onNavigateToSignUpScreen = {
-                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(Destination.ThirdPartyAuthScreen)
+                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(
+                        Destination.ThirdPartyAuthScreen,
+                    )
                 },
             )
         }
@@ -34,7 +38,9 @@ fun NavGraphBuilder.authGraph() {
             val navController = LocalNavController.current
             ThirdPartyAuthRoot(
                 onNavigateToRegisterScreen = {
-                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(Destination.RegisterScreen)
+                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(
+                        Destination.RegisterScreen,
+                    )
                 },
             )
         }
@@ -43,7 +49,9 @@ fun NavGraphBuilder.authGraph() {
             LoginScreenRoot(
                 viewModel = sharedViewModel(rememberAuthScope()),
                 onNavigateToRegisterScreen = {
-                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(Destination.ThirdPartyAuthScreen)
+                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(
+                        Destination.ThirdPartyAuthScreen,
+                    )
                 },
             )
         }
@@ -52,7 +60,9 @@ fun NavGraphBuilder.authGraph() {
             RegisterScreenRoot(
                 viewModel = sharedViewModel(rememberAuthScope()),
                 onNavigateToLoginScreen = {
-                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(Destination.LoginScreen)
+                    navController.navigateSingleTopTo<Destination.WelcomeScreen>(
+                        Destination.LoginScreen,
+                    )
                 },
             )
         }

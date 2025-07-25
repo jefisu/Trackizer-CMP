@@ -9,10 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
+import com.jefisu.trackizer.feature.addsubscription.presentation.AddSubscriptionRoot
 import com.jefisu.trackizer.feature.home.presentation.HomeScreenRoot
 import com.jefisu.trackizer.navigation.AnimationTarget
 import com.jefisu.trackizer.navigation.AnimationType
 import com.jefisu.trackizer.navigation.Destination
+import com.jefisu.trackizer.navigation.LocalNavController
 import com.jefisu.trackizer.navigation.animatedScreen
 import com.jefisu.trackizer.navigation.sharedViewModel
 
@@ -31,7 +33,10 @@ fun NavGraphBuilder.loggedGraph() {
             DraftScreen("SpendingBudgetsScreen")
         }
         animatedScreen<Destination.AddSubscriptionScreen> {
-            DraftScreen("AddSubscriptionScreen")
+            val navController = LocalNavController.current
+            AddSubscriptionRoot(
+                onBackNavigate = navController::navigateUp,
+            )
         }
         animatedScreen<Destination.CalendarScreen> {
             DraftScreen("CalendarScreen")
@@ -59,9 +64,9 @@ val loggedNavAnimConfig: List<Pair<Destination, List<AnimationTarget>>> = buildL
 }
 
 @Composable
-fun DraftScreen(text: String) {
+fun DraftScreen(text: String, modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
         Text(text = text, style = TrackizerTheme.typography.headline5)

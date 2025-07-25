@@ -52,33 +52,6 @@ import trackizer.core.designsystem.generated.resources.Res
 import trackizer.core.designsystem.generated.resources.bg_bottom_navigation
 import trackizer.core.designsystem.generated.resources.ic_error
 
-data class BottomNavItem(
-    val icon: DrawableResource,
-    val onClick: () -> Unit,
-)
-
-private object BottomNavConstants {
-    const val REQUIRED_ITEMS_COUNT = 5
-    const val DEFAULT_CENTER_FAB_INDEX = 2
-
-    val FAB_CONTAINER_SIZE = 66.dp
-    val FAB_CONTENT_SIZE = 56.dp
-    val FAB_ELEVATION = 8.dp
-    val FAB_BLUR = 25.dp
-    val FAB_STROKE_WIDTH = 2.dp
-    val FAB_OFFSET_Y = (-16).dp
-
-    val RIPPLE_RADIUS = 24.dp
-
-    const val GRADIENT_TRANSPARENT_STOP = 0f
-    const val GRADIENT_VISIBLE_STOP = 0.65f
-    const val FAB_INNER_GRADIENT_START = 0.43f
-    const val FAB_SHADOW_ALPHA = 0.5f
-    const val FAB_STROKE_ALPHA = 0.5f
-
-    const val ANIMATION_DURATION = 300
-}
-
 @Composable
 fun TrackizerBottomNavBar(
     navItems: List<BottomNavItem>,
@@ -107,6 +80,26 @@ fun TrackizerBottomNavBar(
                 onClick()
             },
         )
+    }
+}
+
+@Preview
+@Composable
+private fun TrackizerBottomNavBarPreview() {
+    TrackizerTheme {
+        Box(
+            modifier = Modifier
+                .background(AccentPrimary100.copy(0.3f)),
+        ) {
+            TrackizerBottomNavBar(
+                navItems = (1..5).map {
+                    BottomNavItem(
+                        icon = Res.drawable.ic_error,
+                        onClick = {},
+                    )
+                },
+            )
+        }
     }
 }
 
@@ -288,22 +281,29 @@ private fun DrawScope.drawFabStroke() {
     )
 }
 
-@Preview
-@Composable
-private fun TrackizerBottomNavBarPreview() {
-    TrackizerTheme {
-        Box(
-            modifier = Modifier
-                .background(AccentPrimary100.copy(0.3f)),
-        ) {
-            TrackizerBottomNavBar(
-                navItems = (1..5).map {
-                    BottomNavItem(
-                        icon = Res.drawable.ic_error,
-                        onClick = {},
-                    )
-                },
-            )
-        }
-    }
+data class BottomNavItem(
+    val icon: DrawableResource,
+    val onClick: () -> Unit,
+)
+
+private object BottomNavConstants {
+    const val REQUIRED_ITEMS_COUNT = 5
+    const val DEFAULT_CENTER_FAB_INDEX = 2
+
+    val FAB_CONTAINER_SIZE = 66.dp
+    val FAB_CONTENT_SIZE = 56.dp
+    val FAB_ELEVATION = 8.dp
+    val FAB_BLUR = 25.dp
+    val FAB_STROKE_WIDTH = 2.dp
+    val FAB_OFFSET_Y = (-16).dp
+
+    val RIPPLE_RADIUS = 24.dp
+
+    const val GRADIENT_TRANSPARENT_STOP = 0f
+    const val GRADIENT_VISIBLE_STOP = 0.65f
+    const val FAB_INNER_GRADIENT_START = 0.43f
+    const val FAB_SHADOW_ALPHA = 0.5f
+    const val FAB_STROKE_ALPHA = 0.5f
+
+    const val ANIMATION_DURATION = 300
 }
