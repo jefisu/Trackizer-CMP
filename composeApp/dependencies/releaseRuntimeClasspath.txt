@@ -4,6 +4,7 @@
 :core:platform
 :core:ui
 :core:util
+:feature:addSubscription
 :feature:auth
 :feature:home
 :feature:welcome

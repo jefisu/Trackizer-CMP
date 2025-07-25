@@ -6,7 +6,11 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
@@ -37,7 +41,12 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.dsl.KoinConfiguration
 import org.koin.ksp.generated.module
-import trackizer.composeapp.generated.resources.*
+import trackizer.composeapp.generated.resources.Res
+import trackizer.composeapp.generated.resources.ic_budgets
+import trackizer.composeapp.generated.resources.ic_calendar
+import trackizer.composeapp.generated.resources.ic_credit_cards
+import trackizer.composeapp.generated.resources.ic_home
+import trackizer.composeapp.generated.resources.ic_rounded_add
 
 @Composable
 @Preview
@@ -97,40 +106,47 @@ fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
 }
 
 @Composable
-fun AppBottomNav(
-    isUserLoggedIn: Boolean,
-    navController: NavController,
-) {
+fun AppBottomNav(isUserLoggedIn: Boolean, navController: NavController) {
     val navItems = remember {
         listOf(
             BottomNavItem(
                 icon = Res.drawable.ic_home,
                 onClick = {
-                    navController.navigateSingleTopTo<Destination.HomeScreen>(Destination.HomeScreen)
+                    navController.navigateSingleTopTo<Destination.HomeScreen>(
+                        Destination.HomeScreen,
+                    )
                 },
             ),
             BottomNavItem(
                 icon = Res.drawable.ic_budgets,
                 onClick = {
-                    navController.navigateSingleTopTo<Destination.HomeScreen>(Destination.SpendingBudgetsScreen)
+                    navController.navigateSingleTopTo<Destination.HomeScreen>(
+                        Destination.SpendingBudgetsScreen,
+                    )
                 },
             ),
             BottomNavItem(
                 icon = Res.drawable.ic_rounded_add,
                 onClick = {
-                    navController.navigateSingleTopTo<Destination.HomeScreen>(Destination.AddSubscriptionScreen)
+                    navController.navigateSingleTopTo<Destination.HomeScreen>(
+                        Destination.AddSubscriptionScreen,
+                    )
                 },
             ),
             BottomNavItem(
                 icon = Res.drawable.ic_calendar,
                 onClick = {
-                    navController.navigateSingleTopTo<Destination.HomeScreen>(Destination.CalendarScreen)
+                    navController.navigateSingleTopTo<Destination.HomeScreen>(
+                        Destination.CalendarScreen,
+                    )
                 },
             ),
             BottomNavItem(
                 icon = Res.drawable.ic_credit_cards,
                 onClick = {
-                    navController.navigateSingleTopTo<Destination.HomeScreen>(Destination.CreditCardsScreen)
+                    navController.navigateSingleTopTo<Destination.HomeScreen>(
+                        Destination.CreditCardsScreen,
+                    )
                 },
             ),
         )

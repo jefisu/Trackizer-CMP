@@ -61,3 +61,5 @@ val previewCategories = listOf(
         usedBudget = 30f,
     ),
 )
+
+val previewSubscriptionServices = previewSubscriptions.map { it.service }

@@ -6,9 +6,13 @@ import com.jefisu.trackizer.core.util.Result
 import com.jefisu.trackizer.feature.auth.domain.AuthMessage
 import com.jefisu.trackizer.feature.auth.domain.usecase.LoginUserUseCase
 import com.jefisu.trackizer.feature.auth.domain.validation.EmailValidationError
-import com.jefisu.trackizer.testutil.*
-import kotlinx.coroutines.test.runTest
+import com.jefisu.trackizer.testutil.EMPTY_EMAIL
+import com.jefisu.trackizer.testutil.EMPTY_PASSWORD
+import com.jefisu.trackizer.testutil.INVALID_EMAIL
+import com.jefisu.trackizer.testutil.VALID_EMAIL
+import com.jefisu.trackizer.testutil.VALID_PASSWORD
 import kotlin.test.Test
+import kotlinx.coroutines.test.runTest
 
 class LoginUserUseCaseTest : BaseAuthUseCaseTest() {
 

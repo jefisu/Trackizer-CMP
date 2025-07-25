@@ -14,10 +14,10 @@ import com.jefisu.trackizer.feature.auth.presentation.login.LoginAction
 import com.jefisu.trackizer.feature.auth.presentation.login.LoginViewModel
 import com.jefisu.trackizer.testutil.VALID_EMAIL
 import com.jefisu.trackizer.testutil.VALID_PASSWORD
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class LoginViewModelTest {

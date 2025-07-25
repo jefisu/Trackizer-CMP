@@ -29,11 +29,11 @@ sealed interface Destination {
     data object SpendingBudgetsScreen : Destination
 
     @Serializable
-    data object AddSubscriptionScreen: Destination
+    data object AddSubscriptionScreen : Destination
 
     @Serializable
-    data object CalendarScreen: Destination
+    data object CalendarScreen : Destination
 
     @Serializable
-    data object CreditCardsScreen: Destination
+    data object CreditCardsScreen : Destination
 }

@@ -15,15 +15,15 @@ import com.jefisu.trackizer.feature.auth.presentation.register.RegisterViewModel
 import com.jefisu.trackizer.feature.auth.presentation.register.util.PasswordSecurityLevel
 import com.jefisu.trackizer.testutil.VALID_EMAIL
 import com.jefisu.trackizer.testutil.VALID_PASSWORD
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class RegisterViewModelTest {

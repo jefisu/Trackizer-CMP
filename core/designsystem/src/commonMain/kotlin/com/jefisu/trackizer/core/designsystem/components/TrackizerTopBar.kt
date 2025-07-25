@@ -19,6 +19,7 @@ import com.jefisu.trackizer.core.designsystem.TrackizerTheme
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import trackizer.core.designsystem.generated.resources.Res
+import trackizer.core.designsystem.generated.resources.ic_back
 import trackizer.core.designsystem.generated.resources.ic_settings
 
 @Composable
@@ -50,7 +51,7 @@ fun TrackizerTopBar(
 @Preview
 @Composable
 fun TrackizerTopBarPreview() {
-    _root_ide_package_.com.jefisu.trackizer.core.designsystem.TrackizerTheme {
+    TrackizerTheme {
         TrackizerTopBar(
             title = "Trackizer",
             actions = {
@@ -83,6 +84,19 @@ object TrackizerTopBarDefaults {
             Icon(
                 painter = painterResource(Res.drawable.ic_settings),
                 contentDescription = "Settings icon",
+            )
+        }
+    }
+
+    @Composable
+    fun BackIcon(onClick: () -> Unit, modifier: Modifier = Modifier) {
+        IconButton(
+            onClick = onClick,
+            modifier = modifier,
+        ) {
+            Icon(
+                painter = painterResource(Res.drawable.ic_back),
+                contentDescription = "Back icon",
             )
         }
     }
