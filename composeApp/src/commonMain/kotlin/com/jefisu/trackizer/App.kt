@@ -10,7 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
@@ -70,7 +73,9 @@ fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
         val state by viewModel.state.collectAsStateWithLifecycle()
 
         val userRepository = koinInject<UserRepository>()
-        val isUserLoggedIn = remember { userRepository.isLoggedIn() }
+        var isUserLoggedIn by rememberSaveable {
+            mutableStateOf(userRepository.isLoggedIn())
+        }
 
         FlashMessageDialog(
             message = state.message,
@@ -82,6 +87,7 @@ fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
             navController.navigate(Destination.LoggedGraph) {
                 popUpTo<Destination.AuthGraph> { inclusive = true }
             }
+            isUserLoggedIn = true
             closeKoinScope(AUTH_SCOPE_ID)
         }
 
