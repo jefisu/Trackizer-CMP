@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.jefisu.trackizer.core.designsystem.TrackizerTheme
 import com.jefisu.trackizer.core.designsystem.components.TrackizerSubscriptionIcon
@@ -26,6 +27,7 @@ internal fun SubServicePageItem(service: SubscriptionService, modifier: Modifier
             containerSize = 161.dp,
             cornerSize = 50.dp,
             iconSize = TrackizerTheme.size.iconExtraLarge,
+            containerColor = service.color?.let(::Color),
         )
         Spacer(Modifier.height(TrackizerTheme.spacing.extraMedium))
         Text(

@@ -71,12 +71,11 @@ fun AddSubscriptionRoot(
         }
         viewModel.onAction(action)
     }
-    val previewState = state.copy(
-        servicesAvailable = previewSubscriptionServices,
-    )
+
+    if (state.servicesAvailable.isEmpty()) return
 
     AddSubscriptionScreen(
-        state = previewState,
+        state = state,
         onAction = action,
     )
 }
