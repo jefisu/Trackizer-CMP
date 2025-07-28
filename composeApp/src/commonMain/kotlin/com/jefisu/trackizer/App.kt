@@ -26,6 +26,7 @@ import com.jefisu.trackizer.core.designsystem.components.FlashMessageDialog
 import com.jefisu.trackizer.core.designsystem.components.TrackizerBottomNavBar
 import com.jefisu.trackizer.core.domain.repository.UserRepository
 import com.jefisu.trackizer.core.ui.EventManager
+import com.jefisu.trackizer.core.ui.NavigationEvent
 import com.jefisu.trackizer.core.ui.ObserveAsEvents
 import com.jefisu.trackizer.core.util.closeKoinScope
 import com.jefisu.trackizer.di.AppModule
@@ -83,12 +84,17 @@ fun App(configure: (() -> Unit)? = null) = TrackizerTheme {
         )
 
         ObserveAsEvents(EventManager.events) { event ->
-            if (event !is AuthEvent.UserAuthenticated) return@ObserveAsEvents
-            navController.navigate(Destination.LoggedGraph) {
-                popUpTo<Destination.AuthGraph> { inclusive = true }
+            when (event) {
+                AuthEvent.UserAuthenticated -> {
+                    navController.navigate(Destination.LoggedGraph) {
+                        popUpTo<Destination.AuthGraph> { inclusive = true }
+                    }
+                    isUserLoggedIn = true
+                    closeKoinScope(AUTH_SCOPE_ID)
+                }
+
+                NavigationEvent.Up -> navController.navigateUp()
             }
-            isUserLoggedIn = true
-            closeKoinScope(AUTH_SCOPE_ID)
         }
 
         Scaffold(

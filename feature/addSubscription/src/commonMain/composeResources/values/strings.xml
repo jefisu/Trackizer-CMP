@@ -4,4 +4,8 @@
     <string name="add_this_platform">Add this platform</string>
     <string name="new_title">New</string>
     <string name="add_new_subscription">Add new\nsubscription</string>
+
+    <!-- Errors -->
+    <string name="empty_price_error">The subscription price can't be zero.</string>
+    <string name="subscription_add_failed">Failed to add subscription. Please try again later.</string>
 </resources>

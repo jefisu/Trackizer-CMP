@@ -14,4 +14,5 @@ data class CategoryRemote(
     val budget: Float = 0f,
     val typeId: String = "",
     val userId: String? = Firebase.auth.currentUser?.uid,
+    override val id: String = generateId(),
 ) : RemoteData()

@@ -12,7 +12,8 @@ class FakeSubscriptionRepository : SubscriptionRepository {
     private val _subscriptions = MutableStateFlow(emptyList<Subscription>())
     override val subscriptions = _subscriptions.asStateFlow()
 
-    override suspend fun addSubscription(subscription: Subscription) {
+    override suspend fun addSubscription(subscription: Subscription): Result<Unit> {
         _subscriptions.update { it + subscription }
+        return Result.success(Unit)
     }
 }
