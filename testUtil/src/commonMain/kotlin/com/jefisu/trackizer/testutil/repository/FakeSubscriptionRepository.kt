@@ -12,7 +12,16 @@ class FakeSubscriptionRepository : SubscriptionRepository {
     private val _subscriptions = MutableStateFlow(emptyList<Subscription>())
     override val subscriptions = _subscriptions.asStateFlow()
 
+    private var shouldReturnError = false
+
+    fun setShouldReturnError() {
+        shouldReturnError = true
+    }
+
     override suspend fun addSubscription(subscription: Subscription): Result<Unit> {
+        if (shouldReturnError) {
+            return Result.failure(Exception("Error adding subscription"))
+        }
         _subscriptions.update { it + subscription }
         return Result.success(Unit)
     }
