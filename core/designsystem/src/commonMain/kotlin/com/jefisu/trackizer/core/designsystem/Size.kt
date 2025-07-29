@@ -1,5 +1,6 @@
 package com.jefisu.trackizer.core.designsystem
 
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -23,4 +24,8 @@ data class Size(
     val switchHeight: Dp = 24.dp,
     val bottomNavigationHeight: Dp = 140.dp,
     val editableProfileFieldHeight: Dp = 60.dp,
+    val currencyDividerWidth: Dp = 162.dp,
+    val bottomNavHeightConsumed: Dp = 70.dp,
 )
+
+val LocalSize = compositionLocalOf { Size() }

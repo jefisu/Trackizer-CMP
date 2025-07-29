@@ -12,4 +12,5 @@ data class SubscriptionServiceRemote(
     val imageUrl: String = "",
     val color: Long? = null,
     val userId: String? = null,
+    override val id: String = RemoteData.generateId(),
 ) : RemoteData()

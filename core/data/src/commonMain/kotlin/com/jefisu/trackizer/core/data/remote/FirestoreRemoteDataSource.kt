@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.InternalSerializationApi
+import kotlinx.serialization.serializer
 
 class FirestoreRemoteDataSource<T : RemoteData>(
     collectionPath: String,
@@ -37,4 +38,12 @@ class FirestoreRemoteDataSource<T : RemoteData>(
                     snapshot.documentChanges.map { it.toRemoteDataChange(clazz) }
                 }
         }
+
+    override suspend fun add(obj: T): Result<Unit> {
+        return runCatching {
+            collectionRef
+                .document(obj.id)
+                .set(clazz.serializer(), obj)
+        }
+    }
 }

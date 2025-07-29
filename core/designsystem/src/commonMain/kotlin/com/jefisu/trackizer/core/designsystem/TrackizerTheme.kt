@@ -11,7 +11,10 @@ object TrackizerTheme {
         @Composable
         get() = interTypography()
 
-    val size get() = Size()
+    val size: Size
+        @Composable
+        get() = LocalSize.current
+
     val spacing get() = Spacing()
 }
 

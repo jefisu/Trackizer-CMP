@@ -17,4 +17,5 @@ data class SubscriptionRemote(
     val reminder: Boolean = false,
     val serviceId: String = "",
     val userId: String? = Firebase.auth.currentUser?.uid,
+    override val id: String = RemoteData.generateId(),
 ) : RemoteData()

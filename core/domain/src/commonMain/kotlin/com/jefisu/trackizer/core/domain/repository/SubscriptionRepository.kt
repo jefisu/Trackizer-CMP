@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface SubscriptionRepository {
     val subscriptions: Flow<List<Subscription>>
-    suspend fun addSubscription(subscription: Subscription)
+    suspend fun addSubscription(subscription: Subscription): Result<Unit>
 }

@@ -5,6 +5,7 @@ package com.jefisu.trackizer.core.data.repository
 import com.jefisu.trackizer.core.data.di.RemoteDataSourceQualifiers
 import com.jefisu.trackizer.core.data.remote.RemoteDataSource
 import com.jefisu.trackizer.core.data.remote.mapper.toSubscription
+import com.jefisu.trackizer.core.data.remote.mapper.toSubscriptionRemote
 import com.jefisu.trackizer.core.data.remote.mapper.toSubscriptionService
 import com.jefisu.trackizer.core.data.remote.model.SubscriptionRemote
 import com.jefisu.trackizer.core.data.remote.model.SubscriptionServiceRemote
@@ -45,7 +46,9 @@ class SubscriptionRepositoryImpl(
             }
         }
 
-    override suspend fun addSubscription(subscription: Subscription) {
-        TODO("Not yet implemented")
+    override suspend fun addSubscription(subscription: Subscription): Result<Unit> {
+        return runCatching {
+            subsRemoteDataSource.add(subscription.toSubscriptionRemote())
+        }
     }
 }

@@ -130,6 +130,7 @@ private fun createSubscriptionTab(tabType: TabType, subscriptions: List<Subscrip
     val contentPadding = PaddingValues(
         start = TrackizerTheme.spacing.extraMedium,
         end = TrackizerTheme.spacing.extraMedium,
+        bottom = TrackizerTheme.size.bottomNavHeightConsumed,
     )
 
     return when (tabType) {
@@ -142,6 +143,7 @@ private fun createSubscriptionTab(tabType: TabType, subscriptions: List<Subscrip
                 )
             },
         )
+
         TabType.UPCOMING_BILLS -> Tab(
             title = stringResource(Res.string.upcoming_bills_tab),
             content = {
